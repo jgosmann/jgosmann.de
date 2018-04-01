@@ -8,6 +8,7 @@ header {
     height: 60px;
     display: flex;
     align-items: flex-end;
+    color: #262c26;
 }
 
 header, header>* {
@@ -60,7 +61,6 @@ header h1 small {
 }
 
 header nav {
-    /*margin: auto 0;*/
     font-size: 1.25em;
 }
 
@@ -72,10 +72,9 @@ header nav ul {
 
 header nav li {
     display: inline;
-    /*margin-right: 16px;*/
 }
 
-header nav li a {
+header nav li a, header nav li a:visited {
     display: inline-block;
     padding: 8px;
     line-height: 44px;
@@ -84,7 +83,7 @@ header nav li a {
 }
 
 header nav li a:hover {
-    background-color: #000;
+    background-color: #2b2c26;
     color: #fff;
 }
 
@@ -108,7 +107,7 @@ p {
 
 p, h3, .group {
     padding: 8px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 .group p, .group h3 {
@@ -116,9 +115,34 @@ p, h3, .group {
     background-color: transparent;
 }
 
-p.detail {
+div :first-child {
+    margin-top: 0;
+}
+
+div :last-child {
+    margin-bottom: 0;
+}
+
+.detail {
     margin: 2px;
     font-size: 0.8em;
+}
+
+.inline {
+    list-style-type: none;
+    padding: 0;
+}
+
+.inline li {
+    display: inline;
+}
+
+.inline li:before {
+    content: ", ";
+}
+
+.inline li:first-child:before {
+    content: "";
 }
 
 section {
@@ -128,7 +152,7 @@ section {
 }
 
 section>div {
-    padding: 32px 32px 32px 32px;
+    padding: 64px 32px;
     /*overflow: visible;*/
     min-height: 400px;
 }
@@ -152,13 +176,61 @@ ul.cards {
     flex-wrap: wrap;
 }
 
-ul.cards li {
+ul.cards>li {
     width: 400px;
     margin-right: 64px;
     margin-bottom: 64px;
     background-repeat: no-repeat;
 }
 
-ul.cards.wide li {
+ul.cards.background>li{
+    padding-top: 64px;
+}
+
+ul.cards.wide>li {
     width: 600px;
+}
+
+a {
+    color: #336cc6;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #3d5782;
+}
+
+a:hover {
+    color: #dd16c9;
+}
+
+a[href^="http://"]:before, a[href^="https://"]:before {
+    content: "\21aa";
+}
+
+.collapsible {
+    transition: 0.2s;
+    overflow: hidden;
+}
+
+button.expand {
+    margin-top: 8px;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    height: 24px;
+}
+
+button.expand:hover {
+    background-color: #2b2c26;
+    color: #fff;
+    cursor: pointer;
+}
+
+button.expand:before {
+    content: "\fe3f";
+}
+
+button.expand.collapsed:before {
+    content: "\fe40";
 }
