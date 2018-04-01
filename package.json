@@ -8,6 +8,10 @@
         "webpack": "^4.4.1"
     },
     "devDependencies": {
+        "concurrently": ">=3.5",
         "webpack-cli": ">=2.0"
+    },
+    "scripts": {
+        "start": "concurrently \"webpack --watch\" \"hugo server\""
     }
 }
