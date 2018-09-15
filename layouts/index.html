@@ -40,7 +40,7 @@
                                 <div class="group">
                                     {{ .Content }}
                                     {{ if .Params.exturl }}
-                                        <p><a href="{{ .Params.exturl }}" target="_blank">More information</a></p>
+                                        <p><a href="{{ .Params.exturl }}" target="_blank"><span class="nowrap"><i class="fas fa-external-link-square-alt"></i></span>&nbsp;More information</a></p>
                                     {{ end }}
                                 </div>
                             </li>
@@ -64,7 +64,7 @@
                                         {{ .Content }}
                                         <ul class="inline">
                                             {{ if .Params.exturl }}
-                                                <li><a href="{{ .Params.exturl }}" target="_blank">More information</a></li>{{ end }}{{ if .Params.pdfurl }}<li><a href="{{ .Params.pdfurl }}" target="_blank">PDF</a></li>
+                                                <li><a href="{{ .Params.exturl }}" target="_blank"><span class="nowrap"><i class="fas fa-external-link-square-alt"></i></span>&nbsp;More information</a></li>{{ end }}{{ if .Params.pdfurl }}<li><a href="{{ .Params.pdfurl }}" target="_blank"><span class="nowrap"><i class="fas fa-external-link-square-alt"></i></span>&nbsp;PDF</a></li>
                                             {{ end }}
                                         </ul>
                                     </div>

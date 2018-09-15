@@ -9,7 +9,7 @@ For the ergonomic Neo2 keyboard layout, I provide an improved keyboard layout
 file and accompanying Karabiner-Elements rules for macOS.
 
 <ul style="list-style-type: none; padding: 0;">
-<li><a href="http://neo-layout.org/" target="_blank">Website of the Neo keyboard layout project</a></li>
-<li><a href="https://github.com/jgosmann/neo2-layout-osx" target="_blank">Keyboard layout file</a></li>
-<li><a href="https://pqrs.org/osx/karabiner/complex_modifications/#neo2" target="_blank">Karabiner-Elements rules</a></li>
+<li>{{< ext "http://neo-layout.org/" >}}Website of the Neo keyboard layout project{{< /ext >}}</li>
+<li>{{< ext "https://github.com/jgosmann/neo2-layout-osx" >}}Keyboard layout file{{< /ext >}}</li>
+<li>{{< ext "https://pqrs.org/osx/karabiner/complex_modifications/#neo2" >}}Karabiner-Elements rules{{< /ext >}}</li>
 </ul>
