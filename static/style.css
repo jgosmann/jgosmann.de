@@ -204,10 +204,6 @@ a:hover {
     color: #dd16c9;
 }
 
-a[href^="http://"]:before, a[href^="https://"]:before {
-    content: "\21aa";
-}
-
 .collapsible {
     transition: 0.2s;
     overflow: hidden;
@@ -233,4 +229,8 @@ button.expand:before {
 
 button.expand.collapsed:before {
     content: "\fe40";
+}
+
+.nowrap {
+    white-space: nowrap;
 }

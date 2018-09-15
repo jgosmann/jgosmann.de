@@ -1,4 +1,5 @@
 import fontawesome from '@fortawesome/fontawesome';
-import faCameraRetro from '@fortawesome/fontawesome-free-solid/faCameraRetro';
+fontawesome.config.keepOriginalSource = false;
 
-fontawesome.library.add(faCameraRetro);
+import faExternalLinkSquareAlt from '@fortawesome/fontawesome-free-solid/faExternalLinkSquareAlt';
+fontawesome.library.add(faExternalLinkSquareAlt);
