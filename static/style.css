@@ -149,6 +149,8 @@ section {
     /*min-height: 400px;*/
     margin-bottom: -60px;
     /*overflow: visible;*/
+    background-attachment: fixed;
+    background-position-y: 60px;
 }
 
 section>div {
@@ -163,10 +165,9 @@ section:before {
     height: 60px;
 }
 
-section:nth-child(odd)>div {
+section:nth-child(odd) {
     background-color: #d5ddea;
 }
-
 
 ul.cards {
     list-style-type: none;

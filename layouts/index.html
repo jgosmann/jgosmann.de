@@ -23,8 +23,8 @@
         </header>
         <main id="about">
             {{ range sort ((.Site.GetPage "page" "about").Resources.Match "*.md") "Name" }}
-                <section>
-                    <div style="background-image: url({{ .Params.background }});{{ safeCSS .Params.style }}">
+                <section style="background-image: url({{ .Params.background }});{{ safeCSS .Params.style }}">
+                    <div>
                         <h3><small>{{ .Params.leadTitle }}</small><br />{{ .Title }}</h3>
                         {{ .Content }}
                     </div>
