@@ -3,13 +3,17 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
-        "@fortawesome/fontawesome": "^1.1.5",
-        "@fortawesome/fontawesome-free-solid": "^5.0.9",
-        "webpack": "^4.4.1"
+        "@fortawesome/fontawesome-svg-core": "^1.2.4",
+        "@fortawesome/free-solid-svg-icons": "^5.3.1",
+        "webpack": "^4.19.1"
     },
     "devDependencies": {
-        "concurrently": ">=3.5",
-        "webpack-cli": ">=2.0"
+        "awesome-typescript-loader": "^5.2.1",
+        "concurrently": "^3.6.1",
+        "source-map": "^0.7.3",
+        "source-map-loader": "^0.2.4",
+        "typescript": "^3.0",
+        "webpack-cli": "^3.1.0"
     },
     "scripts": {
         "start": "concurrently \"webpack --watch\" \"hugo server\""
