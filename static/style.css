@@ -188,6 +188,20 @@ ul.cards.background>li{
     padding-top: 64px;
 }
 
+ul.cards.icon>li {
+    width: 120px;
+    text-align: center;
+}
+
+ul.cards.icon>li a {
+    color: #000;
+    transition: 0.2s;
+}
+
+ul.cards.icon>li a:hover {
+    color: #336cc6;
+}
+
 ul.cards.wide>li {
     width: 600px;
 }

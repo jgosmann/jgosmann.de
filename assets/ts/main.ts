@@ -2,7 +2,18 @@ import { config, dom, library } from '@fortawesome/fontawesome-svg-core';
 config.keepOriginalSource = false;
 
 import { faExternalLinkSquareAlt } from '@fortawesome/free-solid-svg-icons/faExternalLinkSquareAlt';
-library.add(faExternalLinkSquareAlt);
+import { faFlickr } from '@fortawesome/free-brands-svg-icons/faFlickr';
+import { faGithub } from '@fortawesome/free-brands-svg-icons/faGithub';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons/faLinkedin';
+import { faStackOverflow } from '@fortawesome/free-brands-svg-icons/faStackOverflow';
+import { faTwitter } from '@fortawesome/free-brands-svg-icons/faTwitter';
+library.add(
+    faExternalLinkSquareAlt,
+    faFlickr,
+    faGithub,
+    faLinkedin,
+    faStackOverflow,
+    faTwitter);
 
 dom.watch();
 

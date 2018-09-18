@@ -77,6 +77,17 @@
             <section id="contact">
                 <div>
                     <h2>Social Medial &amp; Contact</h2>
+                    <ul class="cards icon">
+                        {{ range sort ((.Site.GetPage "page" "smaccount").Resources.Match "*.md") "Name" }}
+                            <li>
+                                <a href="{{ .Params.exturl }}">
+                                    <i class="fab fa-{{ .Params.icon }} fa-fw fa-6x" style="display: block;"></i>
+                                    <div>{{ .Params.title }}</div>
+                                    <div>{{ .Params.handle }}</div>
+                                </a>
+                            </li>
+                        {{ end }}
+                    </ul>
                 </div>
             </section>
         </main>
