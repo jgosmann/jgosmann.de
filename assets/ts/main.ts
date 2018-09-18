@@ -5,3 +5,12 @@ import { faExternalLinkSquareAlt } from '@fortawesome/free-solid-svg-icons/faExt
 library.add(faExternalLinkSquareAlt);
 
 dom.watch();
+
+
+import setHeaderSize from './header';
+window.addEventListener('scroll', setHeaderSize);
+setHeaderSize();
+
+
+import enableCollapsibles from './collapsibles';
+enableCollapsibles();

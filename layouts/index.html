@@ -6,7 +6,7 @@
         <script defer src="js/bundle.js"></script>
     </head>
     <body>
-        <header>
+        <header class="header-large">
             <img src="headshot.jpg" alt="Headshot" id="headshot" />
             <div>
                 <h1 ><small>Hello, my name is</small> Jan Gosmann</h1>
@@ -15,7 +15,6 @@
                         <li><a href="#about" >About Me</a></li>
                         <li><a href="#projects">Projects</a></li>
                         <li><a href="#publications">Publications</a></li>
-                        <li><a href="#blog">Blog</a></li>
                         <li><a href="#contact">Social Media &amp; Contact</a></li>
                     </ul>
                 </nav>
@@ -81,41 +80,5 @@
                 </div>
             </section>
         </main>
-        <script>
-          const header = document.querySelector("header");
-          const header_height = header.offsetHeight;
-
-          const setHeaderSize = function() {
-            let scrollpos = window.scrollY;
-            if (scrollpos >= header_height) {
-                header.classList.remove("header-large");
-            }
-            else {
-                header.classList.add("header-large");
-            }
-          }
-
-          window.addEventListener('scroll', setHeaderSize);
-          setHeaderSize();
-        </script>
-        <script>
-            const collapsibles = document.getElementsByClassName("collapsible");
-            for (let i = 0; i < collapsibles.length; ++i) {
-                let btn = collapsibles[i].nextElementSibling;
-                collapsibles[i].classList.add("collapsed");
-                btn.classList.add("collapsed");
-                collapsibles[i].style.maxHeight = "0px";
-                btn.addEventListener("click", function () {
-                    if (collapsibles[i].classList.contains("collapsed")) {
-                        collapsibles[i].style.maxHeight = collapsibles[i].scrollHeight + "px";
-                    } else {
-                        collapsibles[i].style.maxHeight = "0px";
-                    }
-
-                    btn.classList.toggle("collapsed");
-                    collapsibles[i].classList.toggle("collapsed");
-                });
-            }
-        </script>
     </body>
 </html>
