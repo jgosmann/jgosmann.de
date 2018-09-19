@@ -18,11 +18,15 @@ const nav_links = document.querySelectorAll('header nav a');
 
 export function highlightCurrentSection() {
     let active_id : string = null;
-    for (let i = sections.length - 1; i >= 0; --i) {
-        const elem = sections[i];
-        if (elem.offsetTop <= window.scrollY) {
-            active_id = elem.id;
-            break;
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        active_id = sections[sections.length - 1].id;
+    } else {
+        for (let i = sections.length - 1; i >= 0; --i) {
+            const elem = sections[i];
+            if (elem.offsetTop <= window.scrollY) {
+                active_id = elem.id;
+                break;
+            }
         }
     }
 
