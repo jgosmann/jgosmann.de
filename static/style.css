@@ -145,6 +145,10 @@ div :last-child {
     content: "";
 }
 
+.authorme {
+    font-weight: bold;
+}
+
 section {
     /*min-height: 400px;*/
     margin-bottom: -60px;

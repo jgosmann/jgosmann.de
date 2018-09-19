@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Jan Gosmann</title>
+        <title>{{ .Site.Title }}</title>
         <link rel="stylesheet" href="style.css" />
         {{ readFile "/static/favicons/meta.html" | safeHTML }}
         <script defer src="js/bundle.js"></script>
@@ -56,7 +56,7 @@
                             <li>
                                 <div class="group">
                                     <ol class="detail inline">
-                                        {{ range .Params.authors }}<li>{{ . }}</li>{{ end }}
+                                        {{ range .Params.authors }}{{ if eq . "Jan Gosmann" }}<li class="authorme">{{ . }}</li>{{ else }}<li>{{ . }}</li>{{ end }}{{ end }}
                                     </ol>
                                     <p class="detail">{{ .Params.journal }}, {{ .Params.year }}</p>
                                     <h3>{{ .Title }}</h3>
