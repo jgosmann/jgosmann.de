@@ -22,9 +22,40 @@ header {
     display: block;
 }
 
-nav {
-    display: none;
+header nav {
+    position: fixed;
+    transition: top 0.5s ease-in-out;
+    top: -100%;
+    left: 0;
+    background-color: #fff;
+    width: 100%;
+    font-size: 1.25em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
+
+header nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+header nav li {
+    display: block;
+}
+
+header nav li a, header nav li a:visited {
+    display: block;
+    padding: 8px;
+    line-height: 44px;
+    color: #000;
+    text-decoration: none;
+}
+
+header nav li a:hover {
+    background-color: #2b2c26;
+    color: #fff;
+}
+
 
 main section:first-child {
     background-color: #2b2c26;
@@ -44,6 +75,26 @@ header h1 {
 
 header h1 small {
     font-size: 0.6em;
+}
+
+#minmenu {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    font-size: 1.25em;
+    width: 28px;
+    height: 28px;
+    vertical-align: middle;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 0 0 0 4px;
+    cursor: pointer;
+}
+
+#minmenu svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 small {
@@ -155,7 +206,7 @@ ul.cards.icon>li a {
     transition: 0.2s;
 }
 
-ul.cards.icon>li a:hover {
+ul.cards.icon>li a:hover, #minmenu:hover {
     color: #336cc6;
 }
 
@@ -218,6 +269,10 @@ button.expand.collapsed:before {
         text-align: left;
     }
 
+    #minmenu {
+        display: none;
+    }
+
     section:before {
         content: "";
         display: block;
@@ -249,35 +304,15 @@ button.expand.collapsed:before {
         transition: 1s;
     }
 
-    nav {
-        display: block;
-    }
-
     header nav {
-        font-size: 1.25em;
-    }
-
-    header nav ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
+        display: block;
+        position: relative;
+        top: 0;
+        box-shadow: none;
     }
 
     header nav li {
-        display: inline;
-    }
-
-    header nav li a, header nav li a:visited {
         display: inline-block;
-        padding: 8px;
-        line-height: 44px;
-        color: #000;
-        text-decoration: none;
-    }
-
-    header nav li a:hover {
-        background-color: #2b2c26;
-        color: #fff;
     }
 
     .name {

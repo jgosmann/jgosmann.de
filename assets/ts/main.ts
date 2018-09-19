@@ -1,6 +1,7 @@
 import { config, dom, library } from '@fortawesome/fontawesome-svg-core';
 config.keepOriginalSource = false;
 
+import { faBars } from '@fortawesome/free-solid-svg-icons/faBars';
 import { faExternalLinkSquareAlt } from '@fortawesome/free-solid-svg-icons/faExternalLinkSquareAlt';
 import { faFlickr } from '@fortawesome/free-brands-svg-icons/faFlickr';
 import { faGithub } from '@fortawesome/free-brands-svg-icons/faGithub';
@@ -9,6 +10,7 @@ import { faLinkedin } from '@fortawesome/free-brands-svg-icons/faLinkedin';
 import { faStackOverflow } from '@fortawesome/free-brands-svg-icons/faStackOverflow';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons/faTwitter';
 library.add(
+    faBars,
     faExternalLinkSquareAlt,
     faFlickr,
     faGithub,
@@ -27,3 +29,7 @@ setHeaderSize();
 
 import enableCollapsibles from './collapsibles';
 enableCollapsibles();
+
+
+import enableMinmenu from './minmenu';
+enableMinmenu();

@@ -20,6 +20,7 @@
                     </ul>
                 </nav>
             </div>
+            <div id="minmenu"><i class="fas fa-bars"></i><div>
         </header>
         <main id="about">
             {{ range sort ((.Site.GetPage "page" "about").Resources.Match "*.md") "Name" }}
