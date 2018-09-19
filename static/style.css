@@ -243,20 +243,14 @@ button.expand {
     border: none;
     background-color: transparent;
     height: 24px;
+    font-size: 1.25em;
+    transition: 0.2s;
 }
 
 button.expand:hover {
-    background-color: #2b2c26;
+    background-color: #336cc6;
     color: #fff;
     cursor: pointer;
-}
-
-button.expand:before {
-    content: "\fe3f";
-}
-
-button.expand.collapsed:before {
-    content: "\fe40";
 }
 
 .nowrap {

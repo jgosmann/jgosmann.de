@@ -2,6 +2,8 @@ import { config, dom, library } from '@fortawesome/fontawesome-svg-core';
 config.keepOriginalSource = false;
 
 import { faBars } from '@fortawesome/free-solid-svg-icons/faBars';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons/faChevronDown';
+import { faChevronUp } from '@fortawesome/free-solid-svg-icons/faChevronUp';
 import { faExternalLinkSquareAlt } from '@fortawesome/free-solid-svg-icons/faExternalLinkSquareAlt';
 import { faFlickr } from '@fortawesome/free-brands-svg-icons/faFlickr';
 import { faGithub } from '@fortawesome/free-brands-svg-icons/faGithub';
@@ -11,6 +13,8 @@ import { faStackOverflow } from '@fortawesome/free-brands-svg-icons/faStackOverf
 import { faTwitter } from '@fortawesome/free-brands-svg-icons/faTwitter';
 library.add(
     faBars,
+    faChevronDown,
+    faChevronUp,
     faExternalLinkSquareAlt,
     faFlickr,
     faGithub,
