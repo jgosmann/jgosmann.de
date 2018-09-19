@@ -52,11 +52,15 @@ header nav li a, header nav li a:visited {
     transition: 0.2s;
 }
 
-header nav li a:hover, header nav li a.active {
+header nav li a.active {
     background-color: #2b2c26;
     color: #fff;
 }
 
+header nav li a:hover {
+    background-color: #336cc6;
+    color: #fff;
+}
 
 main section:first-child {
     background-color: #2b2c26;
