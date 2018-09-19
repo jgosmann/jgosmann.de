@@ -150,9 +150,7 @@ div :last-child {
 }
 
 section {
-    /*min-height: 400px;*/
     margin-bottom: -60px;
-    /*overflow: visible;*/
     background-attachment: fixed;
     background-position-y: 60px;
 }
