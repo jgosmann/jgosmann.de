@@ -1,4 +1,5 @@
 const path = require('path');
+const WebappWebpackPlugin = require('webapp-webpack-plugin');
 
 module.exports = {
     mode: 'production',
@@ -26,5 +27,43 @@ module.exports = {
                 loader: "source-map-loader"
             }
         ]
-    }
+    },
+
+    plugins: [
+        new WebappWebpackPlugin({
+            logo: './assets/svg/favicon.svg',
+            prefix: 'favicons',
+            favicons: {
+                appName: 'Jan Gosmann',
+                developerName: 'Jan Gosmann',
+                developerURL: 'https://jgosmann.de',
+                start_url: '/',
+                icons: {
+                    appleStartup: false,
+                    coast: false,
+                    firefox: false,
+                    yandex: false
+                }
+            }
+        }),
+        new class {
+            apply(compiler) {
+                compiler.hooks.make.tapAsync("A", (compilation, callback) => {
+                    compilation.hooks.webappWebpackPluginBeforeEmit.tapAsync(
+                            "B", (result, callback) => {
+                        const fs = require('fs');
+                        fs.writeFile(
+                            "./static/favicons/meta.html", result.html,
+                            (err) => {
+                                if(err) {
+                                    return console.log(err);
+                                }
+                            });
+                        return callback(null, result);
+                    });
+                    return callback();
+                });
+            }
+        }
+    ]
 };

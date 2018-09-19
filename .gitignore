@@ -1,4 +1,6 @@
 node_modules
 public
+static/favicons
 static/js
 .*.swp
+.DS_Store
