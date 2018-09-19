@@ -49,9 +49,10 @@ header nav li a, header nav li a:visited {
     line-height: 44px;
     color: #000;
     text-decoration: none;
+    transition: 0.2s;
 }
 
-header nav li a:hover {
+header nav li a:hover, header nav li a.active {
     background-color: #2b2c26;
     color: #fff;
 }

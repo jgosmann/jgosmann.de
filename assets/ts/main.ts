@@ -22,9 +22,10 @@ library.add(
 dom.watch();
 
 
-import setHeaderSize from './header';
+import { highlightCurrentSection, setHeaderSize } from './header';
 window.addEventListener('scroll', setHeaderSize);
 setHeaderSize();
+window.setInterval(highlightCurrentSection, 200);
 
 
 import enableCollapsibles from './collapsibles';
