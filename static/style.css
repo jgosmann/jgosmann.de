@@ -3,41 +3,27 @@ body {
     margin: 0;
 }
 
-header {
-    position: fixed;
-    height: 60px;
-    display: flex;
-    align-items: flex-end;
-    color: #262c26;
-}
-
-header, header>* {
-    transition: 1s;
-}
-
 #headshot {
     border-radius: 50%;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
     border: 1px solid white;
-    margin: 24px;
 
-    width: 80px;
-    height: 80px;
-    position: relative;
-    top: 30px;
-}
-
-header.header-large {
-    height: 128px;
-}
-
-header.header-large #headshot {
     width: 128px;
     height: 128px;
+    position: relative;
 }
 
-main {
-    padding-top: 68px;
+header {
+    text-align: center;
+    padding: 24px 0;
+}
+
+.name {
+    display: block;
+}
+
+nav {
+    display: none;
 }
 
 main section:first-child {
@@ -58,33 +44,6 @@ header h1 {
 
 header h1 small {
     font-size: 0.6em;
-}
-
-header nav {
-    font-size: 1.25em;
-}
-
-header nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-header nav li {
-    display: inline;
-}
-
-header nav li a, header nav li a:visited {
-    display: inline-block;
-    padding: 8px;
-    line-height: 44px;
-    color: #000;
-    text-decoration: none;
-}
-
-header nav li a:hover {
-    background-color: #2b2c26;
-    color: #fff;
 }
 
 small {
@@ -150,21 +109,12 @@ div :last-child {
 }
 
 section {
-    margin-bottom: -60px;
     background-attachment: fixed;
-    background-position-y: 60px;
 }
 
 section>div {
     padding: 64px 32px;
-    /*overflow: visible;*/
     min-height: 400px;
-}
-
-section:before {
-    content: "";
-    display: block;
-    height: 60px;
 }
 
 section:nth-child(odd) {
@@ -181,13 +131,18 @@ ul.cards {
 
 ul.cards>li {
     width: 400px;
-    margin-right: 64px;
-    margin-bottom: 64px;
     background-repeat: no-repeat;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 64px;
 }
 
-ul.cards.background>li{
+ul.cards.background>li {
     padding-top: 64px;
+}
+
+ul.cards.background>li.nobg {
+    padding-top: 0;
 }
 
 ul.cards.icon>li {
@@ -250,4 +205,95 @@ button.expand.collapsed:before {
 
 .nowrap {
     white-space: nowrap;
+}
+
+@media only screen and (min-width: 600px) {
+    header {
+        padding: 0;
+        position: fixed;
+        height: 60px;
+        display: flex;
+        align-items: flex-end;
+        color: #262c26;
+        text-align: left;
+    }
+
+    section:before {
+        content: "";
+        display: block;
+        height: 60px;
+    }
+
+    section {
+        margin-bottom: -60px;
+        background-position-y: 60px;
+    }
+
+    header.header-large {
+        height: 128px;
+    }
+
+    header #headshot {
+        width: 80px;
+        height: 80px;
+        top: 30px;
+        margin: 24px;
+    }
+
+    header.header-large #headshot {
+        width: 128px;
+        height: 128px;
+    }
+
+    header, header>* {
+        transition: 1s;
+    }
+
+    nav {
+        display: block;
+    }
+
+    header nav {
+        font-size: 1.25em;
+    }
+
+    header nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    header nav li {
+        display: inline;
+    }
+
+    header nav li a, header nav li a:visited {
+        display: inline-block;
+        padding: 8px;
+        line-height: 44px;
+        color: #000;
+        text-decoration: none;
+    }
+
+    header nav li a:hover {
+        background-color: #2b2c26;
+        color: #fff;
+    }
+
+    .name {
+        display: inline-block;
+    }
+
+    main {
+        padding-top: 68px;
+    }
+
+    ul.cards>li {
+        margin-left: 0;
+        margin-right: 64px;
+    }
+
+    ul.cards.background>li.nobg {
+        padding-top: 64px;
+    }
 }

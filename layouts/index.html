@@ -10,20 +10,20 @@
         <header class="header-large">
             <img src="headshot.jpg" alt="Headshot" id="headshot" />
             <div>
-                <h1 ><small>Hello, my name is</small> Jan Gosmann</h1>
+                <h1 ><small>Hello, my name is</small> <span class="name">Jan Gosmann</span></h1>
                 <nav>
                     <ul>
                         <li><a href="#about" >About Me</a></li>
                         <li><a href="#projects">Projects</a></li>
                         <li><a href="#publications">Publications</a></li>
-                        <li><a href="#contact">Social Media &amp; Contact</a></li>
+                        <li><a href="#contact">Social Media</a></li>
                     </ul>
                 </nav>
             </div>
         </header>
         <main id="about">
             {{ range sort ((.Site.GetPage "page" "about").Resources.Match "*.md") "Name" }}
-                <section style="background-image: url({{ .Params.background }});{{ safeCSS .Params.style }}">
+                            <section style="{{ if .Params.background }}background-image: url({{ .Params.background }});{{end}}{{ safeCSS .Params.style }}" class="{{ if not .Params.background }}nobg{{ end }}">
                     <div>
                         <h3><small>{{ .Params.leadTitle }}</small><br />{{ .Title }}</h3>
                         {{ .Content }}
@@ -35,7 +35,7 @@
                     <h2>Projects</h2>
                     <ul class="cards background">
                         {{ range where .Site.RegularPages.ByWeight "Section" "projects" }}
-                            <li style="background-image: url({{ .Params.background }});{{ safeCSS .Params.style }}">
+                        <li style="{{ if .Params.background }}background-image: url({{ .Params.background }});{{ end }}{{ safeCSS .Params.style }}" class="{{ if not .Params.background }}nobg{{ end }}">
                                 <h3>{{ .Title }}</h3>
                                 <div class="group">
                                     {{ .Content }}
@@ -77,7 +77,7 @@
             </section>
             <section id="contact">
                 <div>
-                    <h2>Social Medial &amp; Contact</h2>
+                    <h2>Social Media</h2>
                     <ul class="cards icon">
                         {{ range sort ((.Site.GetPage "page" "smaccount").Resources.Match "*.md") "Name" }}
                             <li>
