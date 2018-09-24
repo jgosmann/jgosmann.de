@@ -4,8 +4,8 @@ To install build dependencies:
 
 To start development server:
 
-    npm start
+    gulp server
 
 To build for deployment:
 
-    npx webpack && hugo
+    gulp
