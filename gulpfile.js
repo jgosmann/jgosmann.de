@@ -81,6 +81,12 @@ gulp.task('responsive-backgrounds', () => {
         .pipe(gulp.dest('./static/bg'));
 });
 
+gulp.task('responsive-images', () => {
+    return gulp.src('./assets/img/*.{png,jpg}')
+        .pipe(responsive({'headshot.jpg': [{ width: 256, quality: 90 }]}))
+        .pipe(gulp.dest('./static'));
+});
+
 gulp.task('responsive-projects', () => {
     return gulp.src('./assets/projects/*.{png,jpg}')
         .pipe(responsive(
