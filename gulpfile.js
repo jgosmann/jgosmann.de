@@ -36,6 +36,11 @@ gulp.task('favicons', () => {
         .pipe(gulp.dest(dest));
 });
 
+gulp.task('fonts', () => {
+    return gulp.src('./assets/fonts/*.{woff,woff2}')
+        .pipe(gulp.dest('./static/fonts'));
+});
+
 gulp.task('responsive-backgrounds', () => {
     return gulp.src('./assets/backgrounds/*.{png,jpg}')
         .pipe(responsive({
@@ -139,6 +144,7 @@ gulp.task('hugo:server', () => {
 gulp.task('default', gulp.series(
     gulp.parallel(
         'favicons',
+        'fonts',
         'responsive-backgrounds',
         'responsive-projects',
         'sass',
