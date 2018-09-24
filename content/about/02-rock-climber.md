@@ -1,6 +1,5 @@
 ---
-background: "climb.jpg"
-style: "background-position: center;"
+background: "climb"
 leadTitle: "I am a"
 title: "Rock Climber"
 ---

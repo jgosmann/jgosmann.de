@@ -1,5 +1,5 @@
 ---
-background: "code.png"
+background: "code"
 leadTitle: "I am a"
 title: "Software Developer"
 ---

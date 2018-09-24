@@ -21,7 +21,7 @@
         </header>
         <main id="about">
             {{ range sort ((.Site.GetPage "page" "about").Resources.Match "*.md") "Name" }}
-                            <section style="{{ if .Params.background }}background-image: url({{ .Params.background }});{{end}}{{ safeCSS .Params.style }}" class="{{ if not .Params.background }}nobg{{ end }}">
+            <section class="{{ if .Params.background }}bg-{{ .Params.background }}{{ else }}nobg{{ end }}">
                     <div>
                         <h3><small>{{ .Params.leadTitle }}</small><br />{{ .Title }}</h3>
                         {{ .Content }}

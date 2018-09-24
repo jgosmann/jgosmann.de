@@ -3,6 +3,8 @@ const child_proc = require('child_process');
 const fs = require('fs');
 const gulp = require('gulp');
 const favicons = require('favicons').stream;
+const responsive = require('gulp-responsive');
+const sass = require('gulp-sass');
 const webpack = require('webpack-stream');
 
 gulp.task('favicons', () => {
@@ -32,6 +34,57 @@ gulp.task('favicons', () => {
             );
         }))
         .pipe(gulp.dest(dest));
+});
+
+gulp.task('responsive-backgrounds', () => {
+    return gulp.src('./assets/backgrounds/*.{png,jpg}')
+        .pipe(responsive({
+            'code.png': [{
+                width: 320,
+                rename: { suffix: '-320' },
+                extractBeforeResize: {
+                    left: 0, top: 0, width: 320, height: 231
+                }
+            }, {
+                width: 640,
+                rename: { suffix: '-640' },
+                extractBeforeResize: {
+                    left: 0, top: 0, width: 640, height: 640
+                }
+            }, {
+                width: 1280,
+                rename: { suffix: '-1280' },
+                extractBeforeResize: {
+                    left: 0, top: 0, width: 1280, height: 903
+                }
+            }, {
+                width: 1578,
+                rename: { suffix: '-full' },
+                extractBeforeResize: {
+                    left: 0, top: 0, width: 1578, height: 903
+                },
+            }],
+            'climb.jpg': [{
+                width: 320,
+                rename: { suffix: '-s' }
+            }, {
+                width: 640,
+                rename: { suffix: '-m' }
+            }, {
+                width: 1280,
+                rename: { suffix: '-l' }
+            }, {
+                width: 2560,
+                rename: { suffix: '-xl' }
+            }]
+        }, { errorOnEnlargement: false }))
+        .pipe(gulp.dest('./static/bg'));
+});
+
+gulp.task('sass', () => {
+    return gulp.src('./assets/style.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('./static'));
 });
 
 gulp.task('webpack', () => {
@@ -70,7 +123,7 @@ gulp.task('hugo:server', () => {
 
 
 gulp.task('default', gulp.series(
-    gulp.parallel('favicons', 'webpack'),
+    gulp.parallel('favicons', 'responsive-backgrounds', 'sass', 'webpack'),
     'hugo:build'
 ));
 
