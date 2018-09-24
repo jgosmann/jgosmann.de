@@ -1,8 +1,5 @@
 node_modules
 public
-static/bg
-static/favicons
-static/js
-static/style.css
+static
 .*.swp
 .DS_Store
