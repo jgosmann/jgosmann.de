@@ -160,17 +160,9 @@ div :last-child {
     font-weight: bold;
 }
 
-section {
-    background-attachment: fixed;
-}
-
 section>div {
     padding: 64px 32px;
     min-height: 400px;
-}
-
-section:nth-child(odd) {
-    background-color: #d5ddea;
 }
 
 ul.cards {
@@ -191,6 +183,8 @@ ul.cards>li {
 
 ul.cards.background>li {
     padding-top: 64px;
+    background-attachment: top;
+    background-size: contain;
 }
 
 ul.cards.background>li.nobg {
@@ -257,88 +251,8 @@ section {
     background-repeat: no-repeat;
 }
 
-section.bg-code {
-    background-color: #2b2c26;
-    background-image: url('bg/code-320.png');
-    background-size: 320px 231px;
-    background-position: -100px 280px;
 
-    @media screen and (min-width: 321px) {
-        background-image: url('bg/code-640.png');
-        background-size: 640px 640px;
-    }
-
-    @media screen and (min-width: 641px), screen and (min-width: 321px) and (min-height: 641px) {
-        background-image: url('bg/code-1280.png');
-        background-size: 1280px 903px;
-    }
-
-    @media screen and (min-width: 1281px) {
-        background-image: url('bg/code-full.png');
-        background-size: 1578px 903px;
-    }
-
-    @media screen and (-webkit-min-device-pixel-ratio: 2),
-            screen and (min-resolution: 192dpi),
-            screen and (min-resolution: 2dppx) {
-        background-image: url('bg/code-640.png');
-        background-size: 480px 480px;
-
-        @media screen and (min-width: 321px), screen and (min-height: 321px) {
-            background-image: url('bg/code-1280.png');
-            background-size: 960px 678px;
-        }
-
-        @media screen and (min-width: 641px) {
-            background-image: url('bg/code-full.png');
-            background-size: 1184px 678px;
-        }
-    }
-}
-
-
-section.bg-climb {
-    background-image: url('bg/climb-s.jpg');
-    background-position: center;
-
-    @media screen and (min-width: 320px), screen and (min-height: 240px) {
-        background-image: url('bg/climb-m.jpg');
-    }
-
-    @media screen and (min-width: 640px), screen and (min-height: 480px) {
-        background-image: url('bg/climb-l.jpg');
-    }
-
-    @media screen and (min-width: 1280px), screen and (min-height: 960px) {
-        background-image: url('bg/climb-xl.jpg');
-    }
-
-    @media screen and (min-width: 2560px), screen and (min-height: 1920px) {
-        background-size: cover;
-    }
-
-    @media screen and (-webkit-min-device-pixel-ratio: 2),
-            screen and (min-resolution: 192dpi),
-            screen and (min-resolution: 2dppx) {
-        background-image: url('bg/climb-m.jpg');
-        background-size: 320px 240px;
-
-        @media screen and (min-width: 320px), screen and (min-height: 240px) {
-            background-image: url('bg/climb-l.jpg');
-            background-size: 640px 480px;
-        }
-
-        @media screen and (min-width: 640px), screen and (min-height: 480px) {
-            background-image: url('bg/climb-xl.jpg');
-            background-size: 1280px 960px;
-        }
-
-        @media screen and (min-width: 1280px), screen and (min-height: 960px) {
-            background-size: cover;
-        }
-    }
-}
-
+@import 'backgrounds';
 
 
 @media only screen and (min-width: 600px) {
@@ -365,16 +279,6 @@ section.bg-climb {
     section {
         margin-bottom: -60px;
         background-position: 0 60px;
-    }
-
-    section.bg-code {
-        background-position: 0 120px;
-
-        @media screen and (-webkit-min-device-pixel-ratio: 2),
-                screen and (min-resolution: 192dpi),
-                screen and (min-resolution: 2dppx) {
-            background-position-x: 200px;
-        }
     }
 
     header.header-large {

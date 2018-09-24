@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>{{ .Site.Title }}</title>
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="main.css" />
         {{ readFile "/static/favicons/meta.html" | safeHTML }}
         <script defer src="js/bundle.js"></script>
     </head>
@@ -33,7 +33,7 @@
                     <h2>Projects</h2>
                     <ul class="cards background">
                         {{ range where .Site.RegularPages.ByWeight "Section" "projects" }}
-                        <li style="{{ if .Params.background }}background-image: url({{ .Params.background }});{{ end }}{{ safeCSS .Params.style }}" class="{{ if not .Params.background }}nobg{{ end }}">
+                        <li style="{{ if .Params.background }}background-image: url(projects/{{ .Params.background }});{{ end }}{{ safeCSS .Params.style }}" class="{{ if not .Params.background }}nobg{{ end }}">
                                 <h3>{{ .Title }}</h3>
                                 <div class="group">
                                     {{ .Content }}

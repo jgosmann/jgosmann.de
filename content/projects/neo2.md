@@ -1,6 +1,5 @@
 ---
 background: "Neo-Icon3.png"
-style: "background-position: top; background-size: contain;"
 title: "Neo2 keyboard layout"
 weight: 0
 ---

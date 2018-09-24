@@ -81,8 +81,16 @@ gulp.task('responsive-backgrounds', () => {
         .pipe(gulp.dest('./static/bg'));
 });
 
+gulp.task('responsive-projects', () => {
+    return gulp.src('./assets/projects/*.{png,jpg}')
+        .pipe(responsive(
+            {'*': [{ width: 800 }]},
+            { errorOnEnlargement: false }))
+        .pipe(gulp.dest('./static/projects'));
+});
+
 gulp.task('sass', () => {
-    return gulp.src('./assets/style.scss')
+    return gulp.src('./assets/scss/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('./static'));
 });
@@ -123,7 +131,13 @@ gulp.task('hugo:server', () => {
 
 
 gulp.task('default', gulp.series(
-    gulp.parallel('favicons', 'responsive-backgrounds', 'sass', 'webpack'),
+    gulp.parallel(
+        'favicons',
+        'responsive-backgrounds',
+        'responsive-projects',
+        'sass',
+        'webpack'
+    ),
     'hugo:build'
 ));
 
