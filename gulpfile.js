@@ -8,7 +8,7 @@ const sass = require('gulp-sass');
 const webpack = require('webpack-stream');
 
 gulp.task('favicons', () => {
-    const dest = './static/favicons';
+    const dest = './static';
     const metafile = dest + '/meta.html';
     return gulp.src('./assets/svg/favicon.svg')
         .pipe(changed(dest, {transformPath: _ => { return metafile; }}))
