@@ -101,7 +101,7 @@ gulp.task('responsive-projects', () => {
 });
 
 gulp.task('sass', () => {
-    return gulp.src('./assets/scss/*.scss')
+    return gulp.src('./assets/scss/main.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('./static'));
 });

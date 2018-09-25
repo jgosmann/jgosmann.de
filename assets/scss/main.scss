@@ -1,151 +1,15 @@
 @import 'normalize';
 
-@font-face {
-    font-family: 'Lato-Light';
-    src: url('fonts/LatoLatin-Light.woff2') format('woff2'),
-        url('fonts/LatoLatin-Light.woff') format('woff');
-}
+@import 'colors';
+@import 'backgrounds';
+@import 'fonts';
+@import 'header';
+@import 'sizes';
 
-@font-face {
-    font-family: 'Lato-Light';
-    src: url('fonts/LatoLatin-LightItalic.woff2') format('woff2'),
-        url('fonts/LatoLatin-LightItalic.woff') format('woff');
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Lato-Light';
-    src: url('fonts/LatoLatin-Regular.woff2') format('woff2'),
-        url('fonts/LatoLatin-Regular.woff') format('woff');
-    font-weight: bold;
-}
 
 body {
     font-family: "Lato-Light";
     margin: 0;
-}
-
-#headshot {
-    border-radius: 50%;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
-    border: 1px solid white;
-
-    width: 128px;
-    height: 128px;
-    position: relative;
-}
-
-header {
-    text-align: center;
-    padding: 24px 0;
-}
-
-.name {
-    display: block;
-}
-
-header nav {
-    position: fixed;
-    transition: top 0.5s ease-in-out;
-    top: -100%;
-    left: 0;
-    background-color: #fff;
-    width: 100%;
-    font-size: 1.25em;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
-}
-
-header nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-header nav li {
-    display: block;
-}
-
-header nav li a, header nav li a:visited {
-    display: block;
-    padding: 8px;
-    line-height: 44px;
-    color: #000;
-    text-decoration: none;
-    transition: 0.2s;
-}
-
-header nav li a.active {
-    background-color: #2b2c26;
-    color: #fff;
-}
-
-header nav li a:hover {
-    background-color: #336cc6;
-    color: #fff;
-}
-
-header {
-    background-color: #fff;
-    width: 100%;
-}
-
-header h1 {
-    margin: 0 0;
-    font-size: 2.5em;
-    font-weight: normal;
-    padding: 8px;
-}
-
-header h1 small {
-    font-size: 0.6em;
-}
-
-#minmenu {
-    position: fixed;
-    top: 0px;
-    right: 0px;
-    font-size: 1.25em;
-    width: 28px;
-    height: 28px;
-    vertical-align: middle;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 0 0 0 4px;
-    cursor: pointer;
-}
-
-#minmenu svg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-small {
-    font-size: 0.8em;
-}
-
-h2 {
-    font-size: 2.25em;
-}
-
-h3 {
-    font-size: 2em;
-    display: inline-block;
-    margin: 32px 0 16px 0;
-}
-
-p {
-    max-width: 600px;
-}
-
-p, h3, .group {
-    padding: 8px;
-    background-color: rgba(255, 255, 255, 0.9);
-}
-
-.group p, .group h3 {
-    padding: 0;
-    background-color: transparent;
 }
 
 div :first-child {
@@ -156,30 +20,8 @@ div :last-child {
     margin-bottom: 0;
 }
 
-.detail {
-    margin: 2px;
-    font-size: 0.8em;
-}
-
-.inline {
-    list-style-type: none;
-    padding: 0;
-}
-
-.inline li {
-    display: inline;
-}
-
-.inline li:before {
-    content: ", ";
-}
-
-.inline li:first-child:before {
-    content: "";
-}
-
-.authorme {
-    font-weight: bold;
+section {
+    background-repeat: no-repeat;
 }
 
 section>div {
@@ -187,13 +29,49 @@ section>div {
     min-height: 400px;
 }
 
-ul.cards {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
+small {
+    font-size: 0.8em;
 }
+
+h2 {
+    font-size: 2.25em;
+    font-weight: normal;
+}
+
+h3 {
+    font-size: 2em;
+    font-weight: normal;
+    display: inline-block;
+    margin: 32px 0 16px 0;
+}
+
+a {
+    color: $col_light_blue;
+    text-decoration: none;
+}
+
+a:visited {
+    color: $col_dark_blue;
+}
+
+a:hover {
+    color: $col_pink;
+}
+
+p {
+    max-width: $pwidth;
+}
+
+p, h3, .group {
+    padding: 8px;
+    background-color: $col_translucent;
+}
+
+.group p, .group h3 {
+    padding: 0;
+    background-color: transparent;
+}
+
 
 ul.cards>li {
     width: 400px;
@@ -216,33 +94,67 @@ ul.cards.background>li.nobg {
 ul.cards.icon>li {
     width: 120px;
     text-align: center;
+
+    a {
+        color: #000;
+        transition: 0.2s;
+    }
+
+    a:hover {
+        color: $col_light_blue;
+    }
 }
 
-ul.cards.icon>li a {
-    color: #000;
-    transition: 0.2s;
-}
+@media screen and (min-width: $breakpoint) {
+    ul.cards>li {
+        margin-left: 0;
+        margin-right: 64px;
+    }
 
-ul.cards.icon>li a:hover, #minmenu:hover {
-    color: #336cc6;
+    ul.cards.background>li.nobg {
+        padding-top: 64px;
+    }
 }
 
 ul.cards.wide>li {
-    width: 600px;
+    width: $pwidth;
 }
 
-a {
-    color: #336cc6;
-    text-decoration: none;
+
+.authorme {
+    font-weight: bold;
 }
 
-a:visited {
-    color: #3d5782;
+.detail {
+    margin: 2px;
+    font-size: 0.8em;
 }
 
-a:hover {
-    color: #dd16c9;
+.inline {
+    list-style-type: none;
+    padding: 0;
+
+    li {
+        display: inline;
+    }
+
+    li:before {
+        content: ", ";
+    }
+
+    li:first-child:before {
+        content: "";
+    }
 }
+
+ul.cards {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 
 .collapsible {
     transition: 0.2s;
@@ -260,94 +172,11 @@ button.expand {
 }
 
 button.expand:hover {
-    background-color: #336cc6;
+    background-color: $col_light_blue;
     color: #fff;
     cursor: pointer;
 }
 
 .nowrap {
     white-space: nowrap;
-}
-
-section {
-    background-repeat: no-repeat;
-}
-
-
-@import 'backgrounds';
-
-
-@media screen and (min-width: 600px) {
-    header {
-        padding: 0;
-        position: fixed;
-        height: 60px;
-        display: flex;
-        align-items: flex-end;
-        color: #262c26;
-        text-align: left;
-    }
-
-    #minmenu {
-        display: none;
-    }
-
-    section:before {
-        content: "";
-        display: block;
-        height: 60px;
-    }
-
-    section {
-        margin-bottom: -60px;
-        background-position: 0 60px;
-    }
-
-    header.header-large {
-        height: 128px;
-    }
-
-    header #headshot {
-        width: 80px;
-        height: 80px;
-        top: 30px;
-        margin: 24px;
-    }
-
-    header.header-large #headshot {
-        width: 128px;
-        height: 128px;
-    }
-
-    header, header>* {
-        transition: 1s;
-    }
-
-    header nav {
-        display: block;
-        position: relative;
-        top: 0;
-        box-shadow: none;
-    }
-
-    header nav li {
-        display: inline-block;
-    }
-
-    .name {
-        display: inline-block;
-    }
-
-    main {
-        padding-top: 68px;
-    }
-
-    ul.cards>li {
-        margin-left: 0;
-        margin-right: 64px;
-    }
-
-    ul.cards.background>li.nobg {
-        padding-top: 64px;
-    }
 }
