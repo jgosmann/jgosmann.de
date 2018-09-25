@@ -26,7 +26,12 @@ section {
 
 section>div {
     padding: 64px 32px;
-    min-height: 400px;
+}
+
+@media screen and (min-height: $breakpoint) {
+    section>div {
+        min-height: 400px;
+    }
 }
 
 small {

@@ -14,7 +14,7 @@ section.bg-code {
     background-color: $col_dark_gray;
     background-image: url('bg/code-320.png');
     background-size: 320px 231px;
-    background-position: -100px 280px;
+    background-position: -100px 60px;
 
     @media screen and (min-width: $breakpoint) {
         background-position: 0 120px;
