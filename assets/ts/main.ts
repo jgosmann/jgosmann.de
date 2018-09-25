@@ -38,3 +38,14 @@ enableCollapsibles();
 
 import enableMinmenu from './minmenu';
 enableMinmenu();
+
+
+const navlinks = document.getElementsByTagName('nav')[0].getElementsByTagName('a');
+for (let i = 0; i < navlinks.length; ++i) {
+    const target = document.getElementById(
+        navlinks[i].attributes['href'].value.substring(1))
+    navlinks[i].addEventListener('click', (e) => {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+    });
+}
