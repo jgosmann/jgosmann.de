@@ -1,7 +1,8 @@
 baseURL = "https://jgosmann.de/"
 languageCode = "en-us"
 title = "Jan Gosmann"
-disableKinds = ["taxonomy", "taxonomyTerm"]
+disableKinds = ["taxonomy", "taxonomyTerm", "RSS"]
+enableRobotsTXT = true
 
 [blackfriday]
 hrefTargetBlank = true
