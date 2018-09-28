@@ -4,3 +4,4 @@ static
 .*.swp
 .DS_Store
 .publish
+assets/meta.html
