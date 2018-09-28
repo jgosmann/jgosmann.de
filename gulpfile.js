@@ -146,6 +146,7 @@ gulp.task('default', gulp.series(
         'favicons',
         'fonts',
         'responsive-backgrounds',
+        'responsive-images',
         'responsive-projects',
         'sass',
         'webpack'
