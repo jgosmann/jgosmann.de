@@ -16,7 +16,7 @@ gulp.task('favicons', () => {
         .pipe(favicons({
             appName: 'Jan Gosmann',
             developerName: 'Jan Gosmann',
-            developerURL: 'https://jgosmann.de',
+            developerURL: 'https://www.jgosmann.de',
             start_url: '/',
             icons: {
                 appleStartup: false,
