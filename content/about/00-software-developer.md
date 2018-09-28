@@ -9,7 +9,7 @@ maintainability, and readability of my code and software. This continuous
 process started for me early with submissions to student computer science
 competitions that were judged primarily on the raw source code. Sometimes more
 important than writing new code is fixing bugs in existing code. In these cases
-it is important to me to locate and resolve the root case, rather than covering
+it is important to me to locate and resolve the root cause, rather than covering
 up the symptoms.
 
 These days I primarily write Python code as it is awesome for the quick
