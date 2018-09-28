@@ -9,3 +9,7 @@ To start development server:
 To build for deployment:
 
     gulp
+
+To build and deploy:
+
+    gulp deploy

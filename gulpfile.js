@@ -1,6 +1,7 @@
 const changed = require('gulp-changed');
 const child_proc = require('child_process');
 const fs = require('fs');
+const ghPages = require('gulp-gh-pages');
 const gulp = require('gulp');
 const favicons = require('favicons').stream;
 const responsive = require('gulp-responsive');
@@ -156,3 +157,9 @@ gulp.task('default', gulp.series(
 
 gulp.task('server', gulp.series('default', gulp.parallel(
     'watch:assets', 'hugo:server')));
+
+gulp.task('deploy', gulp.series('default', () => {
+    return gulp.src('./public/**/*').pipe(ghPages({
+        branch: 'master'
+    }));
+}));
