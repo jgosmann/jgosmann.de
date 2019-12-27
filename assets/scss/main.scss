@@ -50,6 +50,31 @@ h3 {
     margin: 32px 0 16px 0;
 }
 
+@mixin flyin-transition {
+    opacity: 0;
+    transition: 0.5s;
+    transition-timing-function: ease-out;
+}
+
+.flyin {
+    &>h3 {
+        @include flyin-transition;
+        transform: translate(-150px, 0px);
+    }
+
+    &>p, &>li {
+        @include flyin-transition;
+        transform: translate(0, 150px);
+    }
+}
+
+.flyin.flyin-show {
+    &>h3, &>p, &>li {
+        opacity: 1;
+        transform: none;
+    }
+}
+
 a {
     color: $col_light_blue;
     text-decoration: none;

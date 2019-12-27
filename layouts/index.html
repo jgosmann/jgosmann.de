@@ -22,8 +22,8 @@
         </header>
         <main id="about">
             {{ range sort ((.Site.GetPage "page" "about").Resources.Match "*.md") "Name" }}
-            <section class="{{ if .Params.background }}bg-{{ .Params.background }}{{ else }}nobg{{ end }}">
-                    <div>
+                <section class="{{ if .Params.background }}bg-{{ .Params.background }}{{ else }}nobg{{ end }}">
+                    <div class="flyin">
                         <h3><small>{{ .Params.leadTitle }}</small><br />{{ .Title }}</h3>
                         {{ .Content }}
                     </div>
@@ -32,9 +32,9 @@
             <section id="projects">
                 <div>
                     <h2>Projects</h2>
-                    <ul class="cards background">
+                    <ul class="cards background flyin">
                         {{ range where .Site.RegularPages.ByWeight "Section" "projects" }}
-                        <li style="{{ if .Params.background }}background-image: url(projects/{{ .Params.background }});{{ end }}{{ safeCSS .Params.style }}" class="{{ if not .Params.background }}nobg{{ end }}">
+                            <li style="{{ if .Params.background }}background-image: url(projects/{{ .Params.background }});{{ end }}{{ safeCSS .Params.style }}" class="{{ if not .Params.background }}nobg{{ end }}">
                                 <h3>{{ .Title }}</h3>
                                 <div class="group">
                                     {{ .Content }}
@@ -50,7 +50,7 @@
             <section id="publications">
                 <div>
                     <h2>Publications</h2>
-                    <ul class="cards wide">
+                    <ul class="cards wide flyin">
                         {{ range where .Site.RegularPages.ByDate.Reverse "Section" "publications" }}
                             <li>
                                 <div class="group">
