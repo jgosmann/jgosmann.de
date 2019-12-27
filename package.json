@@ -9,7 +9,7 @@
         "webpack": "^4.19.1"
     },
     "devDependencies": {
-        "@types/node": "^9.0.0",
+        "@types/node": "^9.6.55",
         "awesome-typescript-loader": "^5.2.1",
         "favicons": "^5.2.0",
         "gulp": "^4.0.0",
