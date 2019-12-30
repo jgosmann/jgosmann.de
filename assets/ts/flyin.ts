@@ -20,7 +20,7 @@ const onUncovered = (entries: Array<IntersectionObserverEntry>, observer: Inters
   }
 }
 
-const Load = () => {
+const enableFlyIn = () => {
   const observer = new IntersectionObserver(onUncovered, {threshold: 0.2});
 
   const flyInElements = document.querySelectorAll('.flyin');
@@ -29,13 +29,4 @@ const Load = () => {
   })
 }
 
-const enableFlyIn = () => {
-  if (document.readyState === 'loading') {
-    window.addEventListener('load', Load);
-  } else {
-    Load();
-  }
-}
-
 export default enableFlyIn;
-

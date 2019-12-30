@@ -26,30 +26,34 @@ library.add(
 dom.watch();
 
 
-import { highlightCurrentSection, setHeaderSize } from './header';
-window.addEventListener('scroll', setHeaderSize);
-setHeaderSize();
-window.setInterval(highlightCurrentSection, 200);
-
-
+import enableHeader from './header';
 import enableCollapsibles from './collapsibles';
-enableCollapsibles();
-
-
 import enableMinmenu from './minmenu';
-enableMinmenu();
-
-
 import enableFlyIn from './flyin';
-enableFlyIn();
 
 
-const navlinks = document.getElementsByTagName('nav')[0].getElementsByTagName('a');
-for (let i = 0; i < navlinks.length; ++i) {
-    const target = document.getElementById(
-        navlinks[i].attributes['href'].value.substring(1))
-    navlinks[i].addEventListener('click', (e) => {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
-    });
+const activateNavLinks = () => {
+  const navlinks = document.getElementsByTagName('nav')[0].getElementsByTagName('a');
+  for (let i = 0; i < navlinks.length; ++i) {
+      const target = document.getElementById(
+          navlinks[i].attributes['href'].value.substring(1))
+      navlinks[i].addEventListener('click', (e) => {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+      });
+  }
+}
+
+const Load = () => {
+  enableHeader();
+  activateNavLinks();
+  enableFlyIn();
+  enableCollapsibles();
+  enableMinmenu();
+}
+
+if (document.readyState === 'loading') {
+  window.addEventListener('load', Load);
+} else {
+  Load();
 }

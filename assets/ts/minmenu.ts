@@ -1,4 +1,4 @@
-const nav = document.getElementsByTagName('nav')[0];
+let nav;
 let minmenu_active = false;
 
 export function showMinmenu() {
@@ -20,6 +20,7 @@ export function toggleMinmenu() {
 }
 
 export default function enableMinmenu() {
+    nav = document.getElementsByTagName('nav')[0];
     const minmenu = document.getElementById('minmenu');
 
     minmenu.addEventListener('click', (event) => {
