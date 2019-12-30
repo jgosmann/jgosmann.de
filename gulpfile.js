@@ -3,17 +3,17 @@ const child_proc = require('child_process');
 const fs = require('fs');
 const ghPages = require('gulp-gh-pages');
 const gulp = require('gulp');
-const favicons = require('favicons').stream;
+const faviconsStream = require('favicons').stream;
 const responsive = require('gulp-responsive');
-const sass = require('gulp-sass');
-const webpack = require('webpack-stream');
+const gulpSass = require('gulp-sass');
+const webpackStream = require('webpack-stream');
 
-gulp.task('favicons', () => {
+exports.favicons = () => {
     const dest = './static';
     const metafile = './assets/meta.html';
     return gulp.src('./assets/svg/favicon.svg')
         .pipe(changed(dest, {transformPath: _ => { return metafile; }}))
-        .pipe(favicons({
+        .pipe(faviconsStream({
             appName: 'Jan Gosmann',
             developerName: 'Jan Gosmann',
             developerURL: 'https://www.jgosmann.de',
@@ -35,14 +35,14 @@ gulp.task('favicons', () => {
             );
         }))
         .pipe(gulp.dest(dest));
-});
+};
 
-gulp.task('fonts', () => {
+exports.fonts = () => {
     return gulp.src('./assets/fonts/*.{woff,woff2}')
         .pipe(gulp.dest('./static/fonts'));
-});
+};
 
-gulp.task('responsive-backgrounds', () => {
+exports.responsiveBackgrounds = () => {
     return gulp.src('./assets/backgrounds/*.{png,jpg}')
         .pipe(responsive({
             'code.png': [{
@@ -85,46 +85,46 @@ gulp.task('responsive-backgrounds', () => {
             }]
         }, { errorOnEnlargement: false }))
         .pipe(gulp.dest('./static/bg'));
-});
+};
 
-gulp.task('responsive-images', () => {
+exports.responsiveImages = () => {
     return gulp.src('./assets/img/*.{png,jpg}')
         .pipe(responsive({'headshot.jpg': [{ width: 256, quality: 90 }]}))
         .pipe(gulp.dest('./static'));
-});
+};
 
-gulp.task('responsive-projects', () => {
+exports.responsiveProjects = () => {
     return gulp.src('./assets/projects/*.{png,jpg}')
         .pipe(responsive(
             {'*': [{ width: 800 }]},
             { errorOnEnlargement: false }))
         .pipe(gulp.dest('./static/projects'));
-});
+};
 
-gulp.task('sass', () => {
+exports.sass = () => {
     return gulp.src('./assets/scss/main.scss')
-        .pipe(sass().on('error', sass.logError))
+        .pipe(gulpSass().on('error', gulpSass.logError))
         .pipe(gulp.dest('./static'));
-});
+};
 
-gulp.task('webpack', () => {
+exports.webpack = () => {
     return gulp.src('./assets/ts/main.ts')
-        .pipe(webpack(require('./webpack.config.js')))
+        .pipe(webpackStream(require('./webpack.config.js')))
         .pipe(gulp.dest('./static/js'));
-});
+};
 
-gulp.task('watch:assets', () => {
-    return gulp.watch('./assets/**/*', gulp.parallel('default'));
-});
+exports.watchAssets = () => {
+    return gulp.watch('./assets/**/*', gulp.parallel(exports.default));
+};
 
-gulp.task('hugo:build', () => {
+exports.hugoBuild = () => {
     const hugo = child_proc.execFile('hugo');
     hugo.stdout.pipe(process.stdout);
     hugo.stderr.pipe(process.stderr);
     return hugo;
-});
+};
 
-gulp.task('hugo:server', () => {
+exports.hugoServer = () => {
     const hugo = child_proc.spawn('hugo', ['server']);
     hugo.stdout.on('data', (data) => {
         const lines = data.toString().split('\n');
@@ -139,27 +139,33 @@ gulp.task('hugo:server', () => {
         }
     });
     return hugo;
-});
+};
 
-
-gulp.task('default', gulp.series(
+exports.default = gulp.series(
     gulp.parallel(
-        'favicons',
-        'fonts',
-        'responsive-backgrounds',
-        'responsive-images',
-        'responsive-projects',
-        'sass',
-        'webpack'
+        exports.favicons,
+        exports.fonts,
+        exports.responsiveBackgrounds,
+        exports.responsiveImages,
+        exports.responsiveProjects,
+        exports.sass,
+        exports.webpack
     ),
-    'hugo:build'
-));
+    exports.hugoBuild
+);
 
-gulp.task('server', gulp.series('default', gulp.parallel(
-    'watch:assets', 'hugo:server')));
+exports.server = gulp.series(exports.default, gulp.parallel(
+    exports.watchAssets, exports.hugoServer));
 
-gulp.task('deploy', gulp.series('default', () => {
+exports.deploy = gulp.series(exports.default, () => {
     return gulp.src('./public/**/*').pipe(ghPages({
         branch: 'master'
     }));
-}));
+  child_process.execFileSync(
+    'rsync', [
+      '-avz', '--delete', '--checksum',
+      'public/', 'jgosmann@hyper-world.de:~/adventures'
+    ],
+    { stdio: 'inherit' }
+  );
+});
