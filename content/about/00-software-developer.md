@@ -12,6 +12,7 @@ important than writing new code is fixing bugs in existing code. In these cases
 it is important to me to locate and resolve the root cause, rather than covering
 up the symptoms.
 
-These days I primarily write Python code as it is awesome for the quick
-prototyping and data analysis often necessary in research. See below for a [list
-of projects](#projects) I contributed and continue to contribute to.
+These days I primarily write C# code at work and Python in my free time. I also
+spend some time with JavaScript, TypeScript, and various frontend technologies
+in both settings. See below for a [list of projects](#projects) I contributed
+and continue to contribute to.
