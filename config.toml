@@ -4,5 +4,18 @@ title = "Jan Gosmann"
 disableKinds = ["taxonomy", "taxonomyTerm", "RSS"]
 enableRobotsTXT = true
 
-[blackfriday]
-hrefTargetBlank = true
+[module]
+  [[module.mounts]]
+    source = "assets/fonts"
+    target = "static/fonts"
+
+  [[module.mounts]]
+    source = "favicons"
+    target = "static"
+
+  [[module.mounts]]
+    source = "static"
+    target = "static"
+
+[markup.goldmark.renderer]
+unsafe = true

@@ -9,7 +9,7 @@ const gulpSass = require('gulp-sass');
 const webpackStream = require('webpack-stream');
 
 exports.favicons = () => {
-    const dest = './static';
+    const dest = './favicons';
     const metafile = './assets/meta.html';
     return gulp.src('./assets/svg/favicon.svg')
         .pipe(changed(dest, {transformPath: _ => { return metafile; }}))
@@ -35,11 +35,6 @@ exports.favicons = () => {
             );
         }))
         .pipe(gulp.dest(dest));
-};
-
-exports.fonts = () => {
-    return gulp.src('./assets/fonts/*.{woff,woff2}')
-        .pipe(gulp.dest('./static/fonts'));
 };
 
 exports.responsiveBackgrounds = () => {
@@ -101,12 +96,6 @@ exports.responsiveProjects = () => {
         .pipe(gulp.dest('./static/projects'));
 };
 
-exports.sass = () => {
-    return gulp.src('./assets/scss/main.scss')
-        .pipe(gulpSass().on('error', gulpSass.logError))
-        .pipe(gulp.dest('./static'));
-};
-
 exports.webpack = () => {
     return gulp.src('./assets/ts/main.ts')
         .pipe(webpackStream(require('./webpack.config.js')))
@@ -144,11 +133,9 @@ exports.hugoServer = () => {
 exports.default = gulp.series(
     gulp.parallel(
         exports.favicons,
-        exports.fonts,
         exports.responsiveBackgrounds,
         exports.responsiveImages,
         exports.responsiveProjects,
-        exports.sass,
         exports.webpack
     ),
     exports.hugoBuild

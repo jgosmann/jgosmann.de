@@ -4,7 +4,9 @@
         <meta charset="utf-8"/>
         <title>{{ .Site.Title }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="main.css" />
+        {{ $sass := resources.Get "scss/main.scss" }}
+        {{ $style := $sass | resources.ToCSS (dict "targetPath" "main.css" "outputStyle" "compressed") | fingerprint }}
+        <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" />
         {{ readFile "/assets/meta.html" | safeHTML }}
         <script defer src="js/bundle.js"></script>
         <noscript>
