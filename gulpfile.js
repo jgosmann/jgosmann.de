@@ -144,14 +144,11 @@ exports.default = gulp.series(
 exports.server = gulp.series(exports.default, gulp.parallel(
     exports.watchAssets, exports.hugoServer));
 
-exports.deploy = gulp.series(exports.default, () => {
-    return gulp.src('./public/**/*').pipe(ghPages({
-        branch: 'master'
-    }));
-  child_process.execFileSync(
+exports.deploy = gulp.series(exports.default, async () => {
+  child_proc.execFileSync(
     'rsync', [
       '-avz', '--delete', '--checksum',
-      'public/', 'jgosmann@hyper-world.de:~/adventures'
+      'public/', 'jgosmann@hyper-world.de:~/jgosmann'
     ],
     { stdio: 'inherit' }
   );
