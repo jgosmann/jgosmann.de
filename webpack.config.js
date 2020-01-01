@@ -10,21 +10,14 @@ module.exports = {
     filename: 'bundle.[contenthash].js'
   },
 
-  devtool: "source-map",
-  resolve: {
-    extensions: [".ts", ".js", ".json"]
-  },
+  devtool: "sourcemap",
 
   module: {
     rules: [
       {
-        test: /\.ts$/,
-        loader: "awesome-typescript-loader",
-        exclude: '/node_modules/'
-      }, {
-        enforce: "pre",
         test: /\.js$/,
-        loader: "source-map-loader"
+        exclude: /node_modules/,
+        loader: 'babel-loader'
       }
     ]
   },
@@ -41,5 +34,13 @@ module.exports = {
       },
       fileName: 'webpack-manifest.json'
     })
-  ]
+  ],
+
+  resolve: {
+    alias: {
+      'react': 'preact/compat',
+      'react-dom/testing-utils': 'preact/test-utils',
+      'react-dom': 'preact/compat'
+    }
+  }
 };

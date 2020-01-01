@@ -1,5 +1,5 @@
 
-const handleFlyIn = (element: HTMLElement) => {
+const handleFlyIn = (element) => {
   element.classList.add('flyin-show');
   for (let i = 0; i < element.children.length; ++i) {
     const child = element.children[i];
@@ -9,7 +9,7 @@ const handleFlyIn = (element: HTMLElement) => {
   }
 }
 
-const onUncovered = (entries: Array<IntersectionObserverEntry>, observer: IntersectionObserver) => {
+const onUncovered = (entries, observer) => {
   for (let entry of entries) {
     if (entry.target instanceof HTMLElement) {
       entry.target.tagName

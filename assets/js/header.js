@@ -1,6 +1,6 @@
 const enableHeader = () => {
   const header = document.querySelector("header");
-  const header_height : number = header.offsetHeight;
+  const header_height = header.offsetHeight;
 
   const setHeaderSize = () => {
     let scrollpos = window.scrollY;
@@ -16,7 +16,7 @@ const enableHeader = () => {
   const nav_links = document.querySelectorAll('header nav a');
 
   const highlightCurrentSection = () => {
-    let active_id : string = null;
+    let active_id = null;
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
       active_id = sections[sections.length - 1].id;
     } else {
