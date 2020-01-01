@@ -8,7 +8,7 @@
         {{ $style := $sass | resources.ToCSS (dict "targetPath" "main.css" "outputStyle" "compressed" "includePaths" (slice "node_modules")) | fingerprint }}
         <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" />
         {{ readFile "/assets/meta.html" | safeHTML }}
-        <script defer src="js/bundle.js"></script>
+        {{ partial "script.main.js.html" . }}
         <noscript>
 <style>
 .flyin>h3, .flyin>p, .flyin>li {

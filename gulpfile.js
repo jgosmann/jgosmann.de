@@ -99,7 +99,7 @@ exports.responsiveProjects = () => {
 exports.webpack = () => {
     return gulp.src('./assets/ts/main.ts')
         .pipe(webpackStream(require('./webpack.config.js')))
-        .pipe(gulp.dest('./static/js'));
+        .pipe(gulp.dest('./lib'));
 };
 
 exports.watchAssets = () => {

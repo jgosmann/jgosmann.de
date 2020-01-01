@@ -5,4 +5,7 @@ static
 .DS_Store
 .publish
 assets/meta.html
+favicons
+layouts/partials/script.*.html
+lib
 resources/_gen
