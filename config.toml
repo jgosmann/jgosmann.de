@@ -3,8 +3,19 @@ languageCode = "en-us"
 title = "Jan Gosmann"
 disableKinds = ["taxonomy", "taxonomyTerm", "RSS"]
 enableRobotsTXT = true
+DefaultContentLanguage = "en"
+
+[languages.en]
+weight = 1
+
+[languages.de]
+weight = 2
 
 [module]
+  [[module.mounts]]
+    source = "node_modules/flag-icon-css/flags"
+    target = "static/flags"
+
   [[module.mounts]]
     source = "assets/fonts"
     target = "static/fonts"

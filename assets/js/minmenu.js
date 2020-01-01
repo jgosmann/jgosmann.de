@@ -21,6 +21,7 @@ export function toggleMinmenu() {
 
 export default function enableMinmenu() {
     nav = document.getElementsByTagName('nav')[0];
+    if (!nav) return;
     const minmenu = document.getElementById('minmenu');
 
     minmenu.addEventListener('click', (event) => {

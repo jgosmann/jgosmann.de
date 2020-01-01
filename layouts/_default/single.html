@@ -1,0 +1,15 @@
+{{ define "css" }}
+    {{ $sass := resources.Get "scss/single.scss" }}
+    {{ $style := $sass | resources.ToCSS (dict "targetPath" "main.css" "outputStyle" "compressed" "includePaths" (slice "node_modules")) | fingerprint }}
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" />
+{{ end }}
+{{ define "head" }}
+    {{ partial "script.crypted.js.html" . }}
+{{ end }}
+{{ define "body" }}
+<main>
+    <a href="{{ $.Site.BaseURL }}"><i class="fas fa-home"></i>&nbsp;Home</a>
+    {{ .Content }}
+    <a href="{{ $.Site.BaseURL }}"><i class="fas fa-home"></i>&nbsp;Home</a>
+</main>
+{{ end }}

@@ -1,0 +1,123 @@
+@import 'normalize.css/normalize';
+
+@import 'colors';
+@import 'fonts';
+@import 'footer';
+@import 'sizes';
+
+
+body {
+    font-family: "Lato-Light", Helvetica, sans-serif;
+}
+
+main {
+    margin: auto;
+    padding: 32px;
+    max-width: 600px;
+}
+
+a {
+    color: $col_light_blue;
+    text-decoration: none;
+}
+
+a:visited {
+    color: $col_dark_blue;
+}
+
+a:hover {
+    color: $col_pink;
+}
+
+.crypted-phone:after {
+    content: attr(data-country) "\202f" attr(data-area) "\202f" attr(data-block0) "\202f" attr(data-block1);
+}
+
+.crypted-email:after {
+    content: attr(data-name) "@" attr(data-domain) "." attr(data-tld);
+}
+
+@mixin shaded-button($mainColor, $shade, $highlight) {
+    background-color: $mainColor;
+    background: linear-gradient(180deg, $mainColor 60%, $shade 100%);
+    border: none;
+    border-radius: 4px;
+    padding: 8px;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+    transition: 0.2s;
+    cursor: pointer;
+    display: inline-block;
+
+    margin-left: 8px;
+    margin-right: 8px;
+
+    &:hover {
+        background-color: $highlight;
+        background: linear-gradient(180deg, $highlight 60%, $shade 100%);
+    }
+
+    &:active {
+        transition: 0s;
+        background: $mainColor;
+    }
+}
+
+.button-small {
+    @include shaded-button(rgb(230, 230, 230), rgb(180, 180, 180), rgb(246, 246, 246));
+
+    color: #000;
+    padding: 1px 4px;
+    position: relative;
+
+    &:hover {
+        color: #000;
+    }
+}
+
+@keyframes enlarge-fade-out {
+    from {
+        transform: scale(1, 1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(3, 3);
+        opacity: 0;
+    }
+}
+
+.enlarge-fade-out {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    animation: enlarge-fade-out 0.2s 1;
+}
+
+$flag-icon-css-path: '/flags';
+$include: "us" "gb" "de";
+@import "flag-icon-css/sass/flag-icon";
+
+.split-flag {
+    position: relative;
+    &::before {
+        content: '\00a0';
+    }
+    line-height: 1em;
+    width: (4/3) * 1em;
+    display: inline-block;
+
+    .ul, .lr {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        &::before {
+            content: '';
+        }
+    }
+
+    .lr {
+        clip-path: polygon(0% 100%, 100% 0%, 100% 100%);
+    }
+}

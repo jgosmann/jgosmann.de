@@ -1,5 +1,6 @@
 const enableHeader = () => {
   const header = document.querySelector("header");
+  if (!header) return;
   const header_height = header.offsetHeight;
 
   const setHeaderSize = () => {

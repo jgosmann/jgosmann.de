@@ -103,8 +103,6 @@ header {
 
 
 @media screen and (min-width: $breakpoint) {
-    $head_def_height: 60px;
-
     header {
         padding: 0;
         position: fixed;

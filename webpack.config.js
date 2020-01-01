@@ -4,10 +4,14 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
+  entry: {
+    main: './assets/js/main.js',
+    crypted: './assets/js/crypted.js'
+  },
   mode: 'production',
   output: {
     path: path.resolve(__dirname, 'lib'),
-    filename: 'bundle.[contenthash].js'
+    filename: '[name].[contenthash].js'
   },
 
   devtool: "sourcemap",

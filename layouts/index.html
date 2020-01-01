@@ -1,24 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8"/>
-        <title>{{ .Site.Title }}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        {{ $sass := resources.Get "scss/main.scss" }}
-        {{ $style := $sass | resources.ToCSS (dict "targetPath" "main.css" "outputStyle" "compressed" "includePaths" (slice "node_modules")) | fingerprint }}
-        <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" />
-        {{ readFile "/assets/meta.html" | safeHTML }}
-        {{ partial "script.main.js.html" . }}
-        <noscript>
-<style>
-.flyin>h3, .flyin>p, .flyin>li {
-    opacity: 1;
-    transform: none;
-}
-</style>
-        </noscript>
-    </head>
-    <body>
+{{ define "body" }}
         <header class="header-large">
             <img src="headshot.jpg" alt="Headshot" id="headshot" />
             <div>
@@ -102,5 +82,4 @@
                 </div>
             </section>
         </main>
-    </body>
-</html>
+{{ end }}
