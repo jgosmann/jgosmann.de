@@ -5,11 +5,14 @@
 @import 'footer';
 @import 'sizes';
 
+html {
+    height: 100%;
+}
 
 body {
     font-family: "Lato-Light", Helvetica, sans-serif;
 
-    min-height: 100vh;
+    min-height: 100%;
     display: flex;
     flex-direction: column;
 
