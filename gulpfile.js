@@ -1,14 +1,20 @@
 const changed = require('gulp-changed');
-const child_proc = require('child_process');
+const child_process = require('child_process');
+const faviconsStream = require('favicons').stream;
 const fs = require('fs');
 const ghPages = require('gulp-gh-pages');
 const gulp = require('gulp');
-const faviconsStream = require('favicons').stream;
-const responsive = require('gulp-responsive');
 const gulpSass = require('gulp-sass');
+const path = require('path');
+const responsive = require('gulp-responsive');
 const webpackStream = require('webpack-stream');
 
-exports.favicons = () => {
+const clean = () => {
+  return del(['./public']);
+}
+exports.clean = clean;
+
+const favicons = () => {
     const dest = './favicons';
     const metafile = './assets/meta.html';
     return gulp.src('./assets/svg/favicon.svg')
@@ -36,8 +42,9 @@ exports.favicons = () => {
         }))
         .pipe(gulp.dest(dest));
 };
+exports.favicons = favicons;
 
-exports.responsiveBackgrounds = () => {
+const responsiveBackgrounds = () => {
     return gulp.src('./assets/backgrounds/*.{png,jpg}')
         .pipe(responsive({
             'code.png': [{
@@ -82,13 +89,13 @@ exports.responsiveBackgrounds = () => {
         .pipe(gulp.dest('./static/bg'));
 };
 
-exports.responsiveImages = () => {
+const responsiveImages = () => {
     return gulp.src('./assets/img/*.{png,jpg}')
         .pipe(responsive({'headshot.jpg': [{ width: 256, quality: 90 }]}))
         .pipe(gulp.dest('./static'));
 };
 
-exports.responsiveProjects = () => {
+const responsiveProjects = () => {
     return gulp.src('./assets/projects/*.{png,jpg}')
         .pipe(responsive(
             {'*': [{ width: 800 }]},
@@ -96,25 +103,44 @@ exports.responsiveProjects = () => {
         .pipe(gulp.dest('./static/projects'));
 };
 
-exports.webpack = () => {
+const webpack = () => {
     return gulp.src(['./assets/js/main.js', './assets/js/crypted.js'])
         .pipe(webpackStream(require('./webpack.config.js')))
         .pipe(gulp.dest('./lib'));
 };
+exports.webpack = webpack;
 
-exports.watchAssets = () => {
-    return gulp.watch('./assets/**/*', gulp.parallel(exports.default));
+const watchAssets = () => {
+    gulp.watch('./assets/svg/favicon.svg', favicons);
+    gulp.watch('./assets/backgrounds/**/*', responsiveBackgrounds);
+    gulp.watch('./assets/img/**/*', responsiveImages);
+    gulp.watch('./assets/projects/**/*', responsiveProjects);
+    gulp.watch('./assets/js/**/*', webpack);
 };
+exports.watchAssets = watchAssets;
 
-exports.hugoBuild = () => {
-    const hugo = child_proc.execFile('hugo');
-    hugo.stdout.pipe(process.stdout);
-    hugo.stderr.pipe(process.stderr);
-    return hugo;
-};
+const hugo = async () => {
+  const isFingerprinted = (dirent) => {
+    return ['.js', '.js.map', '.css'].some(suffix => dirent.name.endsWith(suffix));
+  }
 
-exports.hugoServer = () => {
-    const hugo = child_proc.spawn('hugo', ['server']);
+  for (const public_path of ['./public', './public/js']) {
+    const public_dir = await fs.promises.opendir(public_path);
+    for await (const dirent of public_dir) {
+      if (isFingerprinted(dirent)) {
+        await fs.promises.unlink(path.join(public_path, dirent.name))
+      }
+    }
+  }
+
+  await child_process.execFile(
+    'hugo', { stdio: 'inherit' }
+  );
+}
+exports.hugo = hugo;
+
+const hugoServer = () => {
+    const hugo = child_process.spawn('hugo', ['server']);
     hugo.stdout.on('data', (data) => {
         const lines = data.toString().split('\n');
         for (let i = 0; i < lines.length; ++i) {
@@ -129,27 +155,22 @@ exports.hugoServer = () => {
     });
     return hugo;
 };
+exports.hugoServer = hugoServer;
 
-exports.default = gulp.series(
-    gulp.parallel(
-        exports.favicons,
-        exports.responsiveBackgrounds,
-        exports.responsiveImages,
-        exports.responsiveProjects,
-        exports.webpack
-    ),
-    exports.hugoBuild
-);
-
-exports.server = gulp.series(exports.default, gulp.parallel(
-    exports.watchAssets, exports.hugoServer));
-
-exports.deploy = gulp.series(exports.default, async () => {
-  child_proc.execFileSync(
+const deploy = () => {
+  return child_process.execFile(
     'rsync', [
       '-avz', '--delete', '--checksum',
       'public/', 'jgosmann@hyper-world.de:~/jgosmann'
     ],
     { stdio: 'inherit' }
   );
-});
+};
+exports.deploy = deploy;
+
+const responsiveAssets = gulp.parallel(responsiveBackgrounds, responsiveImages, responsiveProjects);
+exports.responsiveAssets = responsiveAssets;
+
+exports.server = gulp.parallel(watchAssets, hugoServer);
+exports.build = gulp.series(gulp.parallel(favicons, responsiveAssets, webpack), hugo);
+exports.default = exports.build;
