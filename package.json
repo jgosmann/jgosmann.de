@@ -1,33 +1,34 @@
 {
-    "name": "jgosmann",
-    "version": "0.1.0",
-    "private": true,
-    "dependencies": {
-        "@fortawesome/fontawesome-svg-core": "^1.2.26",
-        "@fortawesome/free-brands-svg-icons": "^5.12.0",
-        "@fortawesome/free-regular-svg-icons": "^5.12.0",
-        "@fortawesome/free-solid-svg-icons": "^5.12.0",
-        "@fortawesome/react-fontawesome": "^0.1.8",
-        "flag-icon-css": "^3.4.5",
-        "normalize.css": "^8.0.1",
-        "preact": "^10.1.1",
-        "webpack": "^4.41.4"
-    },
-    "devDependencies": {
-        "@babel/core": "^7.7.7",
-        "@babel/plugin-transform-react-jsx": "^7.7.7",
-        "@babel/preset-env": "^7.7.7",
-        "babel-loader": "^8.0.6",
-        "clean-webpack-plugin": "^3.0.0",
-        "favicons": "^5.5.0",
-        "gulp": "^4.0.2",
-        "gulp-changed": "^4.0.2",
-        "gulp-gh-pages": "^0.5.4",
-        "gulp-responsive": "^3.0.1",
-        "gulp-sass": "^4.0.2",
-        "source-map": "^0.7.3",
-        "webpack-cli": "^3.3.10",
-        "webpack-manifest-plugin": "^2.2.0",
-        "webpack-stream": "^5.2.1"
-    }
+  "name": "jgosmann",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.26",
+    "@fortawesome/free-brands-svg-icons": "^5.12.0",
+    "@fortawesome/free-regular-svg-icons": "^5.12.0",
+    "@fortawesome/free-solid-svg-icons": "^5.12.0",
+    "@fortawesome/react-fontawesome": "^0.1.8",
+    "flag-icon-css": "^3.4.5",
+    "normalize.css": "^8.0.1",
+    "preact": "^10.1.1",
+    "webpack": "^4.41.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/plugin-transform-react-jsx": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "favicons": "^5.5.0",
+    "gulp": "^4.0.2",
+    "gulp-changed": "^4.0.2",
+    "gulp-gh-pages": "^0.5.4",
+    "gulp-responsive": "^3.0.1",
+    "gulp-sass": "^4.0.2",
+    "prettier": "1.19.1",
+    "source-map": "^0.7.3",
+    "webpack-cli": "^3.3.10",
+    "webpack-manifest-plugin": "^2.2.0",
+    "webpack-stream": "^5.2.1"
+  }
 }

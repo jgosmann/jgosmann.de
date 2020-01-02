@@ -10,15 +10,15 @@ const enableHeader = () => {
     } else {
       header.classList.add("header-large");
     }
-  }
+  };
 
-  const sections = document.getElementsByTagName('section');
-  const default_section = document.getElementsByTagName('main')[0].id
-  const nav_links = document.querySelectorAll('header nav a');
+  const sections = document.getElementsByTagName("section");
+  const default_section = document.getElementsByTagName("main")[0].id;
+  const nav_links = document.querySelectorAll("header nav a");
 
   const highlightCurrentSection = () => {
     let active_id = null;
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
       active_id = sections[sections.length - 1].id;
     } else {
       for (let i = sections.length - 1; i >= 0; --i) {
@@ -36,17 +36,17 @@ const enableHeader = () => {
 
     for (let i = 0; i < nav_links.length; ++i) {
       const elem = nav_links[i];
-      if (elem.attributes['href'].value == '#' + active_id) {
-        elem.classList.add('active');
+      if (elem.attributes["href"].value == "#" + active_id) {
+        elem.classList.add("active");
       } else {
-        elem.classList.remove('active');
+        elem.classList.remove("active");
       }
     }
-  }
+  };
 
-  window.addEventListener('scroll', setHeaderSize);
+  window.addEventListener("scroll", setHeaderSize);
   setHeaderSize();
   window.setInterval(highlightCurrentSection, 200);
-}
+};
 
 export default enableHeader;

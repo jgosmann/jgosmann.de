@@ -1,17 +1,17 @@
-const fs = require('fs');
-const path = require('path');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const ManifestPlugin = require('webpack-manifest-plugin');
+const fs = require("fs");
+const path = require("path");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const ManifestPlugin = require("webpack-manifest-plugin");
 
 module.exports = {
   entry: {
-    main: './assets/js/main.js',
-    crypted: './assets/js/crypted.js'
+    main: "./assets/js/main.js",
+    crypted: "./assets/js/crypted.js"
   },
-  mode: 'production',
+  mode: "production",
   output: {
-    path: path.resolve(__dirname, 'lib'),
-    filename: '[name].[contenthash].js'
+    path: path.resolve(__dirname, "lib"),
+    filename: "[name].[contenthash].js"
   },
 
   devtool: "sourcemap",
@@ -21,7 +21,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        loader: "babel-loader"
       }
     ]
   },
@@ -29,22 +29,29 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new ManifestPlugin({
-      map: (fd) => {
+      map: fd => {
         if (/.js$/.test(fd.name)) {
-          outPath = path.resolve(__dirname, 'layouts/partials/', 'script.' + fd.name + '.html');
-          fs.writeFileSync(outPath, `<script src="{{ "/js/${fd.path}" | relURL }}" defer></script>`);
+          outPath = path.resolve(
+            __dirname,
+            "layouts/partials/",
+            "script." + fd.name + ".html"
+          );
+          fs.writeFileSync(
+            outPath,
+            `<script src="{{ "/js/${fd.path}" | relURL }}" defer></script>`
+          );
         }
         return fd;
       },
-      fileName: 'webpack-manifest.json'
+      fileName: "webpack-manifest.json"
     })
   ],
 
   resolve: {
     alias: {
-      'react': 'preact/compat',
-      'react-dom/testing-utils': 'preact/test-utils',
-      'react-dom': 'preact/compat'
+      react: "preact/compat",
+      "react-dom/testing-utils": "preact/test-utils",
+      "react-dom": "preact/compat"
     }
   }
 };
