@@ -10,6 +10,7 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
 import { faHome } from "@fortawesome/free-solid-svg-icons/faHome";
 import { faKeybase } from "@fortawesome/free-brands-svg-icons/faKeybase";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons/faLinkedin";
+import { faRss } from "@fortawesome/free-solid-svg-icons/faRss";
 import { faStackOverflow } from "@fortawesome/free-brands-svg-icons/faStackOverflow";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons/faTwitter";
 library.add(
@@ -22,6 +23,7 @@ library.add(
   faHome,
   faKeybase,
   faLinkedin,
+  faRss,
   faStackOverflow,
   faTwitter
 );

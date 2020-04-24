@@ -1,85 +1,126 @@
 {{ define "body" }}
-        <header class="header-large">
-            <img src="headshot.jpg" alt="Headshot" id="headshot" />
-            <div>
-                <h1 ><small>Hello, my name is</small> <span class="name">Jan Gosmann</span></h1>
-                <nav>
-                    <ul>
-                        <li><a href="#about" >About Me</a></li><li><a href="#projects">Projects</a></li><li><a href="#publications">Publications</a></li><li><a href="#contact">Social Media</a></li>
-                    </ul>
-                </nav>
-            </div>
-            <div id="minmenu"><i class="fas fa-bars"></i></div>
-        </header>
-        <main id="about">
-            {{ range sort ((.Site.GetPage "page" "about").Resources.Match "*.md") "Name" }}
-                <section class="{{ if .Params.background }}bg-{{ .Params.background }}{{ else }}nobg{{ end }}">
-                    <div class="flyin">
-                        <h3><small>{{ .Params.leadTitle }}</small><br />{{ .Title }}</h3>
-                        {{ .Content }}
-                    </div>
-                </section>
+<header class="header-large">
+  <img src="headshot.jpg" alt="Headshot" id="headshot" />
+  <div>
+    <h1>
+      <small>Hello, my name is</small> <span class="name">Jan Gosmann</span>
+    </h1>
+    <nav>
+      <ul>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#contact">Social Media</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div id="minmenu"><i class="fas fa-bars"></i></div>
+</header>
+<main id="about">
+  {{ range sort ((.Site.GetPage "page" "about").Resources.Match "*.md") "Name"
+  }}
+  <section
+    class="{{ if .Params.background }}bg-{{ .Params.background }}{{ else }}nobg{{ end }}"
+  >
+    <div class="flyin">
+      <h3><small>{{ .Params.leadTitle }}</small><br />{{ .Title }}</h3>
+      {{ .Content }}
+    </div>
+  </section>
+  {{ end }}
+  <section id="projects">
+    <div>
+      <h2>Projects</h2>
+      <ul class="cards background flyin">
+        {{ range where .Site.RegularPages.ByWeight "Section" "projects" }}
+        <li
+          style="{{ if .Params.background }}background-image: url(projects/{{ .Params.background }});{{ end }}{{ safeCSS .Params.style }}"
+          class="{{ if not .Params.background }}nobg{{ end }}"
+        >
+          <h3>{{ .Title }}</h3>
+          <div class="group">
+            {{ .Content }} {{ if .Params.exturl }}
+            <p>
+              <a href="{{ .Params.exturl }}" target="_blank" rel="noopener"
+                ><span class="nowrap"
+                  ><i class="fas fa-external-link-square-alt"></i></span
+                >&nbsp;More information</a
+              >
+            </p>
             {{ end }}
-            <section id="projects">
-                <div>
-                    <h2>Projects</h2>
-                    <ul class="cards background flyin">
-                        {{ range where .Site.RegularPages.ByWeight "Section" "projects" }}
-                            <li style="{{ if .Params.background }}background-image: url(projects/{{ .Params.background }});{{ end }}{{ safeCSS .Params.style }}" class="{{ if not .Params.background }}nobg{{ end }}">
-                                <h3>{{ .Title }}</h3>
-                                <div class="group">
-                                    {{ .Content }}
-                                    {{ if .Params.exturl }}
-                                        <p><a href="{{ .Params.exturl }}" target="_blank" rel="noopener"><span class="nowrap"><i class="fas fa-external-link-square-alt"></i></span>&nbsp;More information</a></p>
-                                    {{ end }}
-                                </div>
-                            </li>
-                        {{ end }}
-                    </ul>
-                </div>
-            </section>
-            <section id="publications">
-                <div>
-                    <h2>Publications</h2>
-                    <ul class="cards wide flyin">
-                        {{ range where .Site.RegularPages.ByDate.Reverse "Section" "publications" }}
-                            <li>
-                                <div class="group">
-                                    <ol class="detail inline">
-                                        {{ range .Params.authors }}{{ if eq . "Jan Gosmann" }}<li class="authorme">{{ . }}</li>{{ else }}<li>{{ . }}</li>{{ end }}{{ end }}
-                                    </ol>
-                                    <p class="detail">{{ .Params.journal }}, {{ .Params.year }}</p>
-                                    <h3>{{ .Title }}</h3>
-                                    <div class="collapsible">
-                                        {{ .Content }}
-                                        <ul class="inline">
-                                            {{ if .Params.exturl }}
-                                                <li><a href="{{ .Params.exturl }}" target="_blank" rel="noopener"><span class="nowrap"><i class="fas fa-external-link-square-alt"></i></span>&nbsp;More information</a></li>{{ end }}{{ if .Params.pdfurl }}<li><a href="{{ .Params.pdfurl }}" target="_blank" rel="noopener"><span class="nowrap"><i class="fas fa-external-link-square-alt"></i></span>&nbsp;PDF</a></li>
-                                            {{ end }}
-                                        </ul>
-                                    </div>
-                                    <button title="expand" class="expand"><i class="fas fa-chevron-down"></i></button>
-                                </div>
-                            </li>
-                        {{ end }}
-                    </ul>
-                </div>
-            </section>
-            <section id="contact">
-                <div>
-                    <h2>Social Media</h2>
-                    <ul class="cards icon">
-                        {{ range sort ((.Site.GetPage "page" "smaccount").Resources.Match "*.md") "Name" }}
-                            <li>
-                                <a href="{{ .Params.exturl }}" rel="noopener">
-                                    <i class="fab fa-{{ .Params.icon }} fa-fw fa-6x" style="display: block;"></i>
-                                    <div>{{ .Params.title }}</div>
-                                    <div>{{ .Params.handle }}</div>
-                                </a>
-                            </li>
-                        {{ end }}
-                    </ul>
-                </div>
-            </section>
-        </main>
+          </div>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+  </section>
+  <section id="publications">
+    <div>
+      <h2>Publications</h2>
+      <ul class="cards wide flyin">
+        {{ range where .Site.RegularPages.ByDate.Reverse "Section"
+        "publications" }}
+        <li>
+          <div class="group">
+            <ol class="detail inline">
+              {{ range .Params.authors }}{{ if eq . "Jan Gosmann" }}
+              <li class="authorme">{{ . }}</li>
+              {{ else }}
+              <li>{{ . }}</li>
+              {{ end }}{{ end }}
+            </ol>
+            <p class="detail">{{ .Params.journal }}, {{ .Params.year }}</p>
+            <h3>{{ .Title }}</h3>
+            <div class="collapsible">
+              {{ .Content }}
+              <ul class="inline">
+                {{ if .Params.exturl }}
+                <li>
+                  <a href="{{ .Params.exturl }}" target="_blank" rel="noopener"
+                    ><span class="nowrap"
+                      ><i class="fas fa-external-link-square-alt"></i></span
+                    >&nbsp;More information</a
+                  >
+                </li>
+                {{ end }}{{ if .Params.pdfurl }}
+                <li>
+                  <a href="{{ .Params.pdfurl }}" target="_blank" rel="noopener"
+                    ><span class="nowrap"
+                      ><i class="fas fa-external-link-square-alt"></i></span
+                    >&nbsp;PDF</a
+                  >
+                </li>
+                {{ end }}
+              </ul>
+            </div>
+            <button title="expand" class="expand">
+              <i class="fas fa-chevron-down"></i>
+            </button>
+          </div>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+  </section>
+  <section id="contact">
+    <div>
+      <h2>Social Media</h2>
+      <ul class="cards icon">
+        {{ range sort ((.Site.GetPage "page" "smaccount").Resources.Match
+        "*.md") "Name" }}
+        <li>
+          <a href="{{ .Params.exturl }}" rel="noopener">
+            <i
+              class="{{ .Params.icon }} fa-fw fa-6x"
+              style="display: block;"
+            ></i>
+            <div>{{ .Params.title }}</div>
+            <div>{{ .Params.handle }}</div>
+          </a>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+  </section>
+</main>
 {{ end }}
