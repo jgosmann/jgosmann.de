@@ -17,8 +17,7 @@
   <div id="minmenu"><i class="fas fa-bars"></i></div>
 </header>
 <main id="about">
-  {{ range sort ((.Site.GetPage "page" "about").Resources.Match "*.md") "Name"
-  }}
+  {{ range sort ((.Site.GetPage "page" "about").Resources.Match "*.md") "Name" }}
   <section
     class="{{ if .Params.background }}bg-{{ .Params.background }}{{ else }}nobg{{ end }}"
   >
@@ -58,8 +57,7 @@
     <div>
       <h2>Publications</h2>
       <ul class="cards wide flyin">
-        {{ range where .Site.RegularPages.ByDate.Reverse "Section"
-        "publications" }}
+        {{ range where .Site.RegularPages.ByDate.Reverse "Section" "publications" }}
         <li>
           <div class="group">
             <ol class="detail inline">
@@ -106,8 +104,7 @@
     <div>
       <h2>Social Media</h2>
       <ul class="cards icon">
-        {{ range sort ((.Site.GetPage "page" "smaccount").Resources.Match
-        "*.md") "Name" }}
+        {{ range sort ((.Site.GetPage "page" "smaccount").Resources.Match "*.md") "Name" }}
         <li>
           <a href="{{ .Params.exturl }}" rel="noopener">
             <i
