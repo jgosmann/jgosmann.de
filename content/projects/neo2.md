@@ -1,7 +1,7 @@
 ---
 background: "Neo-Icon3.png"
 title: "Neo2 keyboard layout"
-weight: 0
+weight: 2
 ---
 
 For the ergonomic Neo2 keyboard layout, I provide an improved keyboard layout

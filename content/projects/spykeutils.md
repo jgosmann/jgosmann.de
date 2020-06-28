@@ -3,7 +3,7 @@ background: ""
 style: ""
 title: "Spykeutils"
 exturl: "https://spykeutils.readthedocs.io/en/0.4.1/"
-weight: 4
+weight: 6
 ---
 
 I contributed highly optimized implementations of spike train metrics to the
