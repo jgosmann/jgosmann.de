@@ -25,5 +25,5 @@ Deutschland
 
 Telefon: <span class="crypted-phone" data-country="+49" data-area="174"
   data-block0="3588" data-block1="307"></span><br>
-E-Mail: <a href="#" class="crypted-email" data-name="adventures" data-domain="jgosmann"
+E-Mail: <a href="#" class="crypted-email" data-name="contact" data-domain="jgosmann"
   data-tld="de"></a>
