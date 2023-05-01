@@ -40,6 +40,8 @@ const backgroundCssVars = await getBackgroundImages()
 
 <style define:vars={{ ...breakpoints, ...backgroundCssVars }} lang="scss">
     section {
+        padding: 64px 32px;
+        
         @media screen and (min-height: 600px) {
             &>div {
                 min-height: 400px;
