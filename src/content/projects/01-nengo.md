@@ -1,9 +1,7 @@
 ---
-background: "nengo3.png"
-style: ""
+background: "../../assets/projects/nengo3.png"
 title: "Nengo"
 exturl: "https://www.nengo.ai/"
-weight: 1
 ---
 
 I contributed to various parts of the Nengo neural network simulator, including

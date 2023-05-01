@@ -1,9 +1,6 @@
 ---
-background: ""
-style: ""
 title: "Psyrun"
 exturl: "https://psyrun.readthedocs.io/en/latest/"
-weight: 5
 ---
 
 Psyrun is a Python tool to define parameter spaces and execute an evaluation

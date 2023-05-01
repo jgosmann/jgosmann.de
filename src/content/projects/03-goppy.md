@@ -1,9 +1,7 @@
 ---
-background: "goppy.png"
-style: ""
+background: "../../assets/projects/goppy.png"
 title: "GopPy"
 exturl: "https://goppy.readthedocs.io/en/latest/"
-weight: 3
 ---
 
 GopPy (Gaussian Online Processes for Python) provides an implementation of

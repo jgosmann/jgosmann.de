@@ -93,9 +93,14 @@ const { title } = Astro.props;
   }
 
   h3,
-  p {
+  p, .group {
     padding: 8px;
     background-color: var(--col-translucent);
+  }
+  
+  .group p, .group h3 {
+    padding: 0;
+    background-color: transparent;
   }
 
   p {

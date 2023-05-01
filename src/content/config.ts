@@ -9,4 +9,12 @@ export const collections = {
         title: z.string(),
       }),
   }),
+  projects: defineCollection({
+    schema: ({ image }) =>
+      z.object({
+        background: z.optional(image()),
+        title: z.string(),
+        exturl: z.optional(z.string()),
+      }),
+  }),
 };

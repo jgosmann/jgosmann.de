@@ -2,28 +2,44 @@
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
+import AboutSection from "../components/AboutSection.astro";
 import Section from "../components/Section.astro";
 import { headerCssVars } from "../components/header";
+import Project from "../components/Project.astro";
 
 const aboutSections = await getCollection("about");
-const renderedSections = await Promise.all(
+const renderedAboutSections = await Promise.all(
   aboutSections.map(async (section) => ({
     data: section.data,
     rendered: await section.render(),
   }))
 );
+
+const projects = await getCollection("projects");
+const renderedProjects = await Promise.all(projects.map(async (project) => ({
+  data: project.data,
+  rendered: await project.render(),
+})))
 ---
 
 <Layout title="Welcome to Astro.">
   <Header />
   <main>
     {
-      renderedSections.map(({ rendered: { Content }, data }) => (
-        <Section {...data}>
+      renderedAboutSections.map(({ rendered: { Content }, data }) => (
+        <AboutSection {...data}>
           <Content />
-        </Section>
+        </AboutSection>
       ))
     }
+    <Section id="projects">
+      <h2>Projects</h2>
+      <ul class="cards flyin">
+        {renderedProjects.map(({ rendered: { Content }, data }) => (
+          <Project {...data}><Content /></Project>
+        ))}
+      </ul>
+    </Section>
   </main>
 </Layout>
 
@@ -32,5 +48,13 @@ const renderedSections = await Promise.all(
     main {
       padding-top: var(--header-large-height);
     }
+  }
+  
+  ul.cards {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap; 
   }
 </style>
