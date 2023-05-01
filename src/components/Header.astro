@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import headshot from '../assets/img/headshot.jpg'
-import { headerLargeHeight } from "./header";
+import { headerCssVars } from "./header";
 ---
 
 <header>
@@ -23,14 +23,15 @@ import { headerLargeHeight } from "./header";
 </header>
 
 <script>
+    import { headerLargeHeight } from './header';
+
     const controlHeaderSize = () => {
         const header = document.querySelector("header");
         if (!header) return;
-        const initialHeaderHeight = header.offsetHeight
 
         const setHeaderSize = () => {
             let scrollpos = window.scrollY;
-            if (scrollpos >= initialHeaderHeight) {
+            if (scrollpos >= headerLargeHeight) {
                 header.classList.remove("header-large");
             } else {
                 header.classList.add("header-large");
@@ -48,7 +49,7 @@ import { headerLargeHeight } from "./header";
     }
 </script>
 
-<style lang="scss" define:vars={{ 'header-large-height': `${headerLargeHeight}px` }}>
+<style lang="scss" define:vars={headerCssVars}>
 header {
     text-align: center;
     padding: 24px 0;
@@ -69,10 +70,13 @@ header {
             list-style-type: none;
             margin: 0;
             padding: 0;
+            display: flex;
+            gap: 4px;
         }
 
         li {
             display: block;
+            white-space: nowrap;
 
             a, a:visited {
                 display: block;
