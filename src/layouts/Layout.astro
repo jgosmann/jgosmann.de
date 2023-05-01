@@ -22,6 +22,19 @@ const { title } = Astro.props;
     <Footer />
   </body>
 </html>
+
+<script>
+  import { enableFlyIn } from "../scripts/flyin";
+
+  // FIXME is this necessary? If so extract function
+  // Is the logic correct? loading vs interactive, load vs DOMContentReady
+  if (document.readyState === "loading") {
+    window.addEventListener("load", enableFlyIn);
+  } else {
+    enableFlyIn();
+  }
+</script>
+
 <noscript>
   <style is:inline>
     .flyin > h3,
@@ -32,7 +45,8 @@ const { title } = Astro.props;
     }
   </style>
 </noscript>
-<style is:global>
+
+<style lang="scss" is:global>
   :root {
     --col-dark-blue: #3d5782;
     --col-dark-gray: #2b2c26;
@@ -93,12 +107,14 @@ const { title } = Astro.props;
   }
 
   h3,
-  p, .group {
+  p,
+  .group {
     padding: 8px;
     background-color: var(--col-translucent);
   }
-  
-  .group p, .group h3 {
+
+  .group p,
+  .group h3 {
     padding: 0;
     background-color: transparent;
   }
@@ -109,5 +125,32 @@ const { title } = Astro.props;
 
   small {
     font-size: 0.8em;
+  }
+
+  @mixin flyin-transition {
+    opacity: 0;
+    transition: 0.5s;
+    transition-timing-function: ease-out;
+  }
+
+  .flyin {
+    & > h3 {
+      @include flyin-transition;
+      transform: translate(-150px, 0px);
+    }
+    & > p,
+    & > li {
+      @include flyin-transition;
+      transform: translate(0, 150px);
+    }
+  }
+
+  .flyin.flyin-show {
+    & > h3,
+    & > p,
+    & > li {
+      opacity: 1;
+      transform: none;
+    }
   }
 </style>

@@ -16,10 +16,12 @@ const renderedAboutSections = await Promise.all(
 );
 
 const projects = await getCollection("projects");
-const renderedProjects = await Promise.all(projects.map(async (project) => ({
-  data: project.data,
-  rendered: await project.render(),
-})))
+const renderedProjects = await Promise.all(
+  projects.map(async (project) => ({
+    data: project.data,
+    rendered: await project.render(),
+  }))
+);
 ---
 
 <Layout title="Welcome to Astro.">
@@ -35,9 +37,13 @@ const renderedProjects = await Promise.all(projects.map(async (project) => ({
     <Section id="projects">
       <h2>Projects</h2>
       <ul class="cards flyin">
-        {renderedProjects.map(({ rendered: { Content }, data }) => (
-          <Project {...data}><Content /></Project>
-        ))}
+        {
+          renderedProjects.map(({ rendered: { Content }, data }) => (
+            <Project {...data}>
+              <Content />
+            </Project>
+          ))
+        }
       </ul>
     </Section>
   </main>
@@ -49,12 +55,12 @@ const renderedProjects = await Promise.all(projects.map(async (project) => ({
       padding-top: var(--header-large-height);
     }
   }
-  
+
   ul.cards {
     list-style-type: none;
     margin: 0;
     padding: 0;
     display: flex;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
   }
 </style>
