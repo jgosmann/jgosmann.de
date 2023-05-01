@@ -9,5 +9,5 @@ The sport requires a unique combination of physical fitness, mental focus, and
 problem solving. I prefer technical routes that tax my analytical problem
 solving skills.
 
-See {{< ext "https://www.thecrag.com/climber/jgosmann" >}}my The Crag profile{{< /ext >}} for my
+See [my The Crag profile](https://www.thecrag.com/climber/jgosmann) for my
 ascents.
