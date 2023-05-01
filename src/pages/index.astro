@@ -1,34 +1,36 @@
 ---
-import { getCollection } from 'astro:content';
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Section from '../components/Section.astro';
-import { headerCssVars } from '../components/header';
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Section from "../components/Section.astro";
+import { headerCssVars } from "../components/header";
 
-const aboutSections = await getCollection('about');
+const aboutSections = await getCollection("about");
 const renderedSections = await Promise.all(
-	aboutSections.map(async (section) => ({
-		data: section.data,
-	    rendered: await section.render()
-	}))
-)
-
+  aboutSections.map(async (section) => ({
+    data: section.data,
+    rendered: await section.render(),
+  }))
+);
 ---
 
 <Layout title="Welcome to Astro.">
-	<Header />
-	<main>
-		{renderedSections.map(({ rendered: { Content }, data }) => (
-			<Section {...data}><Content /></Section>
-		))}
-	</main>
+  <Header />
+  <main>
+    {
+      renderedSections.map(({ rendered: { Content }, data }) => (
+        <Section {...data}>
+          <Content />
+        </Section>
+      ))
+    }
+  </main>
 </Layout>
 
 <style define:vars={headerCssVars}>
-
-@media screen and (min-width: 600px) {
-	main {
-		padding-top: var(--header-large-height);
-	}
-}
+  @media screen and (min-width: 600px) {
+    main {
+      padding-top: var(--header-large-height);
+    }
+  }
 </style>

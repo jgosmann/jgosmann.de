@@ -13,5 +13,8 @@
     "astro": "^2.3.0",
     "sass": "^1.62.0",
     "sharp": "^0.31.3"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.8"
   }
 }
