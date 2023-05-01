@@ -1,5 +1,4 @@
 ---
-background: ""
 leadTitle: "I am an"
 title: "Interdisciplinary Researcher"
 ---

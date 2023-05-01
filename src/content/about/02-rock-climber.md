@@ -1,5 +1,5 @@
 ---
-background: "climb"
+background: "../../assets/backgrounds/climb.jpg"
 leadTitle: "I am a"
 title: "Rock Climber"
 ---

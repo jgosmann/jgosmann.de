@@ -1,5 +1,5 @@
 ---
-background: "code"
+background: "../../assets/backgrounds/code.png"
 leadTitle: "I am a"
 title: "Software Engineer"
 ---
