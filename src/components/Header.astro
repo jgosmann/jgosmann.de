@@ -1,9 +1,10 @@
 ---
 import { Image } from "astro:assets";
 import headshot from '../assets/img/headshot.jpg'
+import { headerLargeHeight } from "./header";
 ---
 
-<header class="header-large">
+<header>
     <Image src={headshot} alt="Portrait of Jan Gosmann" width={256} height={256} quality={90} id="headshot" />
     <div>
         <h1>
@@ -21,7 +22,33 @@ import headshot from '../assets/img/headshot.jpg'
     <div id="minmenu"><i class="fas fa-bars"></i></div>
 </header>
 
-<style lang="scss">
+<script>
+    const controlHeaderSize = () => {
+        const header = document.querySelector("header");
+        if (!header) return;
+        const initialHeaderHeight = header.offsetHeight
+
+        const setHeaderSize = () => {
+            let scrollpos = window.scrollY;
+            if (scrollpos >= initialHeaderHeight) {
+                header.classList.remove("header-large");
+            } else {
+                header.classList.add("header-large");
+            }
+        };
+
+        window.addEventListener("scroll", setHeaderSize);
+        setHeaderSize();
+    }
+    
+    if (document.readyState === "loading") {
+        window.addEventListener("load", controlHeaderSize);
+    } else {
+        controlHeaderSize();
+    }
+</script>
+
+<style lang="scss" define:vars={{ 'header-large-height': `${headerLargeHeight}px` }}>
 header {
     text-align: center;
     padding: 24px 0;
@@ -155,11 +182,11 @@ header {
     }
 
     header.header-large {
-        height: 128px;
+        height: var(--header-large-height);
 
         #headshot {
-            width: 128px;
-            height: 128px;
+            width: var(--header-large-height);
+            height: var(--header-large-height);
         }
     }
 
@@ -167,25 +194,8 @@ header {
         transition: 1s;
     }
 
-
     #minmenu {
         display: none;
-    }
-
-
-    main {
-        padding-top: 68px;
-    }
-
-    section:before {
-        content: "";
-        display: block;
-        height: var(--head-def-height);
-    }
-
-    section {
-        margin-bottom: -var(--head-def-height);
-        background-position: 0 var(--head-def-height);
     }
 }
 </style>
