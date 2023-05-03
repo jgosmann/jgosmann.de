@@ -26,6 +26,7 @@ const renderedProjects = await Promise.all(
 
 <Layout title="Welcome to Astro.">
   <Header />
+  <a id="about"></a>
   <main>
     {
       renderedAboutSections.map(({ rendered: { Content }, data }) => (
@@ -34,7 +35,8 @@ const renderedProjects = await Promise.all(
         </AboutSection>
       ))
     }
-    <Section id="projects">
+    <Section>
+      <a id="projects"></a>
       <h2>Projects</h2>
       <ul class="cards flyin">
         {
