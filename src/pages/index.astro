@@ -6,6 +6,8 @@ import AboutSection from "../components/AboutSection.astro";
 import Section from "../components/Section.astro";
 import { headerCssVars } from "../components/header";
 import Project from "../components/Project.astro";
+import ExtLink from "../components/ExtLink.astro";
+import Publication from "../components/Publication.astro";
 
 const aboutSections = await getCollection("about");
 const renderedAboutSections = await Promise.all(
@@ -20,6 +22,14 @@ const renderedProjects = await Promise.all(
   projects.map(async (project) => ({
     data: project.data,
     rendered: await project.render(),
+  }))
+);
+
+const publications = await getCollection("publications");
+const renderedPublications = await Promise.all(
+  publications.map(async (publication) => ({
+    data: publication.data,
+    rendered: await publication.render(),
   }))
 );
 ---
@@ -41,9 +51,20 @@ const renderedProjects = await Promise.all(
       <ul class="cards flyin">
         {
           renderedProjects.map(({ rendered: { Content }, data }) => (
-            <Project {...data}>
+            <li><Project {...data}>
               <Content />
-            </Project>
+            </Project></li>
+          ))
+        }
+      </ul>
+    </Section>
+    <Section>
+      <a id="publications"></a>
+      <h2>Publications</h2>
+      <ul class="cards wide flyin">
+        {
+          renderedPublications.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).map(({ rendered: { Content }, data }) => (
+          <li><Publication {...data}><Content /></Publication></li>
           ))
         }
       </ul>
@@ -52,17 +73,31 @@ const renderedProjects = await Promise.all(
 </Layout>
 
 <style define:vars={headerCssVars}>
-  @media screen and (min-width: 600px) {
-    main {
-      padding-top: var(--header-large-height);
-    }
-  }
-
   ul.cards {
     list-style-type: none;
     margin: 0;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
+    gap: 64px;
+    justify-content: center;
+  }
+  
+  ul.cards>li {
+    width: 400px;
+  }
+  
+  ul.cards.wide>li {
+    width: 600px;
+  }
+
+  @media screen and (min-width: 600px) {
+    main {
+      padding-top: var(--header-large-height);
+    }
+    
+    ul.cards {
+      justify-content: left;
+    }
   }
 </style>

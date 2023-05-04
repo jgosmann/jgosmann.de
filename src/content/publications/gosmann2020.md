@@ -2,7 +2,6 @@
 authors:
   - Jan Gosmann
   - Chris Eliasmith
-year: 2020
 date: 2020-07-08
 journal: "Psychological Review"
 pdfurl: "http://compneuro.uwaterloo.ca/files/publications/gosmann.2020.pdf"

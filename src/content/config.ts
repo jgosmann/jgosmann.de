@@ -17,4 +17,14 @@ export const collections = {
         exturl: z.optional(z.string()),
       }),
   }),
+  publications: defineCollection({
+    schema: z.object({
+      authors: z.array(z.string()),
+      date: z.date(),
+      journal: z.string(),
+      pdfurl: z.optional(z.string()),
+      exturl: z.optional(z.string()),
+      title: z.string(),
+    }),
+  }),
 };

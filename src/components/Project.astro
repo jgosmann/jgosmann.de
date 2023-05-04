@@ -1,6 +1,7 @@
 ---
 import type { ImageMetadata } from "astro";
 import { getImage } from "astro:assets";
+import ExtLink from "./ExtLink.astro";
 
 interface Props {
   title: string;
@@ -17,38 +18,22 @@ const backgroundImage = background
   : "none";
 ---
 
-<li style={{ backgroundImage }}>
+<div class="container" style={{ backgroundImage }}>
   <h3>{title}</h3>
   <div class="group">
     <slot />
     {
       exturl && (
         <p>
-          <a href={exturl} target="_blank" rel="noopener">
-            <span class="nowrap">
-              <i class="fa-solid fa-up-right-from-square" />
-            </span>
-            &nbsp;More information
-          </a>
+          <ExtLink href={exturl}>More information</ExtLink>
         </p>
       )
     }
   </div>
-</li>
+</div>
 
 <style>
-  li {
-    width: 400px;
+  .container {
     background-repeat: no-repeat;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 64px;
-  }
-
-  @media screen and (min-width: 600px) {
-    li {
-      margin-left: 0;
-      margin-right: 64px;
-    }
   }
 </style>

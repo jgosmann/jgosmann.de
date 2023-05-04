@@ -1,0 +1,54 @@
+---
+import Collapsible from './Collapsible.astro'
+import ExtLink from './ExtLink.astro'
+
+export interface Props {
+    authors: string[]
+    date: Date,
+    journal: string
+    title: string
+    exturl?: string
+    pdfurl?: string
+}
+
+const { authors, date, journal, title, exturl, pdfurl } = Astro.props
+
+---
+
+<div class="group">
+<div><small>
+  <ol class="inline">{authors.map(author => <li class:list={author === 'Jan Gosmann' ? ['authorme'] : []}>{author}</li>)}</ol>
+  {journal}, {date.getFullYear()}</small></div>
+  <h3>{title}</h3>
+  <Collapsible>
+    <slot />
+    <ul class="inline">
+      {exturl && <li><ExtLink href={exturl}>More information</ExtLink></li>}
+      {pdfurl && <li><ExtLink href={pdfurl}>PDF</ExtLink></li>}
+    </ul>
+  </Collapsible>
+</div>
+
+<style lang="scss">
+.inline {
+    list-style-type: none;
+    padding: 0;
+
+    li {
+        display: inline;
+    }
+
+    li:after {
+        content: ", ";
+    }
+
+    li:last-child:after {
+        content: "";
+    }
+}
+
+.authorme {
+    font-weight: bold;
+}
+
+</style>

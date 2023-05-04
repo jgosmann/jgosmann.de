@@ -5,7 +5,6 @@ authors:
   - Terrence C. Stewart
   - Thomas Wennekers
   - Chris Eliasmith
-year: 2017
 date: 2017-02-02
 journal: "Frontiers in Psychology"
 pdfurl: "https://www.frontiersin.org/articles/10.3389/fpsyg.2017.00099/pdf"

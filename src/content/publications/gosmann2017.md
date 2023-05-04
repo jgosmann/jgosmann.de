@@ -2,7 +2,6 @@
 authors:
   - Jan Gosmann
   - Chris Eliasmith
-year: 2017
 date: 2017-05-04
 journal: "Frontiers in Neuroinformatics"
 pdfurl: "https://www.frontiersin.org/articles/10.3389/fninf.2017.00033/pdf"

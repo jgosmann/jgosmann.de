@@ -2,7 +2,6 @@
 authors:
   - Jan Gosmann
   - Chris Eliasmith
-year: 2016
 date: 2016-02-22
 journal: "PLOS ONE"
 pdfurl: "http://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0149928&type=printable"

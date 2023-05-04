@@ -2,7 +2,6 @@
 authors:
   - Jan Gosmann
   - Chris Eliasmith
-year: 2019
 date: 2019-04-24
 journal: "Neural Computation"
 pdfurl: ""
