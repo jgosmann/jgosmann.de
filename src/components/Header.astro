@@ -27,7 +27,7 @@ import { headerCssVars } from "./header";
       </ul>
     </nav>
   </div>
-  <div id="minmenu"><i class="fas fa-bars"></i></div>
+  <div id="minmenu"><i class="fa-solid fa-bars fa-fw fa-xl"></i></div>
 </header>
 
 <script>
@@ -74,13 +74,54 @@ import { headerCssVars } from "./header";
       }
     }
   };
+  
+
+const enableMinmenu = () => {
+  const nav = document.getElementsByTagName("nav")[0];
+  if (!nav) return;
+
+let minmenu_active = false;
+
+const showMinmenu = () => {
+  nav.style.top = "0";
+  minmenu_active = true;
+}
+
+const hideMinmenu = () => {
+  nav.style.top = "-100%";
+  minmenu_active = false;
+}
+
+const toggleMinmenu = () => {
+  if (minmenu_active) {
+    hideMinmenu();
+  } else {
+    showMinmenu();
+  }
+}
+
+  const minmenu = document.getElementById("minmenu");
+
+  minmenu?.addEventListener("click", event => {
+    toggleMinmenu();
+    event.stopPropagation();
+  });
+
+  document.addEventListener("click", () => {
+    if (minmenu_active) {
+      hideMinmenu();
+    }
+  });
+}
 
   if (document.readyState === "loading") {
     window.addEventListener("load", controlHeaderSize);
     window.addEventListener("load", activateSmoothScroll);
+    window.addEventListener("load", enableMinmenu);
   } else {
     controlHeaderSize();
     activateSmoothScroll();
+    enableMinmenu();
   }
 </script>
 
@@ -105,8 +146,6 @@ import { headerCssVars } from "./header";
         list-style-type: none;
         margin: 0;
         padding: 0;
-        display: flex;
-        gap: 4px;
       }
 
       li {
@@ -163,11 +202,9 @@ import { headerCssVars } from "./header";
 
   #minmenu {
     position: fixed;
-    top: 0px;
-    right: 0px;
-    font-size: 1.25em;
-    width: 28px;
-    height: 28px;
+    top: 0;
+    right: 0;
+    padding: 16px;
     vertical-align: middle;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 0 0 0 4px;
@@ -203,8 +240,9 @@ import { headerCssVars } from "./header";
         top: 0;
         box-shadow: none;
 
-        li {
-          display: inline-block;
+        ul {
+          display: flex;
+          gap: 4px;
         }
       }
 
