@@ -8,6 +8,7 @@ import { headerCssVars } from "../components/header";
 import Project from "../components/Project.astro";
 import ExtLink from "../components/ExtLink.astro";
 import Publication from "../components/Publication.astro";
+import SocialMediaAccount from "../components/SocialMediaAccount.astro";
 
 const aboutSections = await getCollection("about");
 const renderedAboutSections = await Promise.all(
@@ -69,6 +70,19 @@ const renderedPublications = await Promise.all(
         }
       </ul>
     </Section>
+    <Section>
+      <a id="contact"></a>
+      <h2>Social Media</h2>
+      <ul class="cards icon">
+        <li><SocialMediaAccount title="LinkedIn" handle="@jgosmann" icon="fa-brands fa-linkedin" exturl="https://www.linkedin.com/in/jgosmann/"/></li>
+        <li><SocialMediaAccount title="GitHub" handle="@jgosmann" icon="fa-brands fa-github" exturl="https://github.com/jgosmann"/></li>
+        <li><SocialMediaAccount title="Blog" handle="blog.jgosmann.de" icon="fa-solid fa-rss" exturl="https://blog.jgosmann.de"/></li>
+        <li><SocialMediaAccount title="Stack Overflow" handle="@jgosmann" icon="fa-brands fa-stack-overflow" exturl="https://stackoverflow.com/users/452160/jgosmann"/></li>
+        <li><SocialMediaAccount title="Flickr" handle="@jgosmann" icon="fa-brands fa-flickr" exturl="https://www.flickr.com/photos/hyper-world"/></li>
+        <li><SocialMediaAccount title="Twitter" handle="@jgosmann" icon="fa-brands fa-twitter" exturl="https://twitter.com/jgosmann"/></li>
+        <li><SocialMediaAccount title="Keybase" handle="@jgosmann" icon="fa-brands fa-keybase" exturl="https://keybase.io/jgosmann"/></li>
+      </ul>
+    </Section>
   </main>
 </Layout>
 
@@ -89,6 +103,10 @@ const renderedPublications = await Promise.all(
   
   ul.cards.wide>li {
     width: 600px;
+  }
+  
+  ul.cards.icon>li {
+    width: 120px;
   }
 
   @media screen and (min-width: 600px) {
