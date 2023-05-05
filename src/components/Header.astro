@@ -202,9 +202,10 @@ import { headerCssVars } from "./header";
       }
     }
 
-    header,
-    header > * {
-      transition: 1s;
+    @media not (prefers-reduced-motion) {
+      header, header > * {
+        transition: 1s;
+      }
     }
 
     #minmenu {

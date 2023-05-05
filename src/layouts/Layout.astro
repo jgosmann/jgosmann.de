@@ -146,24 +146,26 @@ const { title } = Astro.props;
     transition-timing-function: ease-out;
   }
 
-  .flyin {
-    & > h3 {
-      @include flyin-transition;
-      transform: translate(-150px, 0px);
+  @media not (prefers-reduced-motion) {
+    .flyin {
+      & > h3 {
+        @include flyin-transition;
+        transform: translate(-150px, 0px);
+      }
+      & > p,
+      & > li {
+        @include flyin-transition;
+        transform: translate(0, 150px);
+      }
     }
-    & > p,
-    & > li {
-      @include flyin-transition;
-      transform: translate(0, 150px);
-    }
-  }
 
-  .flyin.flyin-show {
-    & > h3,
-    & > p,
-    & > li {
-      opacity: 1;
-      transform: none;
+    .flyin.flyin-show {
+      & > h3,
+      & > p,
+      & > li {
+        opacity: 1;
+        transform: none;
+      }
     }
   }
 </style>
