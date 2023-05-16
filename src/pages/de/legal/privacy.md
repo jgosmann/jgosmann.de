@@ -44,10 +44,8 @@ Vogelweidestr. 5<br>
 81677 München<br>
 Deutschland
 
-Telefon: <span class="crypted-phone" data-country="+49" data-area="174"
-  data-block0="3588" data-block1="307"></span><br>
-E-Mail: <a href="#" class="crypted-email" data-name="contact" data-domain="jgosmann"
-  data-tld="de"></a>
+Telefon: <a is="crypted-phone" country="+49" area="174" block0="3588" block1="307"></a><br>
+E-Mail: <a is="crypted-email" name="contact" domain="jgosmann" tld="de"></a>
 
 
 ## 2. Rechte der Nutzer und Betroffenen
