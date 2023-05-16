@@ -33,6 +33,8 @@ button.expand:hover {
 </style>
 
 <script>
+import onLoad from "../scripts/onLoad";
+
 const enableCollapsibles = () => {
   const collapsibles = document.getElementsByClassName("collapsible");
   for (const elem of collapsibles) {
@@ -59,9 +61,5 @@ const enableCollapsibles = () => {
   }
 }
 
-if (document.readyState === "loading") {
-    window.addEventListener("load", enableCollapsibles);
-    } else {
-    enableCollapsibles();
-}
+onLoad(enableCollapsibles)
 </script>

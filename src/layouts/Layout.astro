@@ -17,14 +17,8 @@ const { title } = Astro.props;
 
 <script>
   import { enableFlyIn } from "../scripts/flyin";
-
-  // FIXME is this necessary? If so extract function
-  // Is the logic correct? loading vs interactive, load vs DOMContentReady
-  if (document.readyState === "loading") {
-    window.addEventListener("load", enableFlyIn);
-  } else {
-    enableFlyIn();
-  }
+  import onLoad from "../scripts/onLoad";
+  onLoad(enableFlyIn)
 </script>
 
 <noscript>

@@ -31,7 +31,8 @@ import { headerCssVars } from "./header";
 </header>
 
 <script>
-  import { headerLargeHeight } from "./header";
+import onLoad from "../scripts/onLoad";
+import { headerLargeHeight } from "./header";
 
   const controlHeaderSize = () => {
     const header = document.querySelector("header");
@@ -88,13 +89,8 @@ const toggleMinmenu = () => {
   });
 }
 
-  if (document.readyState === "loading") {
-    window.addEventListener("load", controlHeaderSize);
-    window.addEventListener("load", enableMinmenu);
-  } else {
-    controlHeaderSize();
-    enableMinmenu();
-  }
+onLoad(controlHeaderSize)
+onLoad(enableMinmenu)
 </script>
 
 <style lang="scss" define:vars={headerCssVars}>
