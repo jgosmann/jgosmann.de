@@ -5,4 +5,5 @@ repos:
       - id: prettier
         files: '\.(astro|css|jsx?|tsx?)$'
         additional_dependencies:
-          - prettier@2.8.0
+          - prettier@2.8.8
+          - prettier-plugin-astro@0.8.1

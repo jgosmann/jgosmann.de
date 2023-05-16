@@ -1,33 +1,30 @@
 ---
-
 export interface Props {
-    exturl: string
-    handle: string
-    icon: string
-    title: string
+  exturl: string;
+  handle: string;
+  icon: string;
+  title: string;
 }
 
-const { exturl, handle, icon, title } = Astro.props
-
+const { exturl, handle, icon, title } = Astro.props;
 ---
 
-<a href={ exturl } rel="noopener">
-    <i
-      class={`${ icon } fa-fw fa-6x`}
-      style="display: block;"
-    ></i>
-    <div>{ title }</div>
-    <div>{ handle }</div>
+<a href={exturl} rel="noopener">
+  <i class={`${icon} fa-fw fa-6x`} style="display: block;"></i>
+  <div>{title}</div>
+  <div>{handle}</div>
 </a>
 
 <style>
-  a, a:visited {
+  a,
+  a:visited {
     text-align: center;
     color: #000;
     transition: 0.2s;
   }
-  
-  a:hover, a:active {
+
+  a:hover,
+  a:active {
     color: var(--col-light-blue);
   }
 </style>

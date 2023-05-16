@@ -1,15 +1,14 @@
 ---
-
 export interface Props {
   title: string;
-  lang?: string
+  lang?: string;
 }
 
 const { title, lang } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang={lang || 'en'}>
+<html lang={lang || "en"}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -23,10 +22,10 @@ const { title, lang } = Astro.props;
 </html>
 
 <style lang="scss" is:global>
-  @import 'normalize.css/normalize.css';
-  @import '@fortawesome/fontawesome-free/scss/fontawesome.scss';
-  @import '@fortawesome/fontawesome-free/scss/brands.scss';
-  @import '@fortawesome/fontawesome-free/scss/solid.scss';
+  @import "normalize.css/normalize.css";
+  @import "@fortawesome/fontawesome-free/scss/fontawesome.scss";
+  @import "@fortawesome/fontawesome-free/scss/brands.scss";
+  @import "@fortawesome/fontawesome-free/scss/solid.scss";
 
   :root {
     --col-dark-blue: #3d5782;
@@ -56,7 +55,7 @@ const { title, lang } = Astro.props;
       url("/fonts/LatoLatin-Regular.woff") format("woff");
     font-weight: bold;
   }
-  
+
   @media not (prefers-reduced-motion) {
     html {
       scroll-behavior: smooth;
@@ -73,7 +72,7 @@ const { title, lang } = Astro.props;
   }
 
   div :last-child {
-      margin-bottom: 0;
+    margin-bottom: 0;
   }
 
   a {

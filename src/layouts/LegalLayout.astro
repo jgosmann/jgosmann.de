@@ -1,54 +1,76 @@
 ---
 import DeFlag from "../components/flags/DeFlag.astro";
 import UsGbFlag from "../components/flags/UsGbFlag.astro";
-import BaseLayout from "./BaseLayout.astro"
+import BaseLayout from "./BaseLayout.astro";
 
 export interface Props {
-    frontmatter: { title: string }
-    url: string
+  frontmatter: { title: string };
+  url: string;
 }
 
-const { frontmatter: { title }, url } = Astro.props;
-const dePrefix = '/de'
-const isLangDe = url.startsWith(`${dePrefix}/`)
-const lang = isLangDe ? 'de' : 'en'
+const {
+  frontmatter: { title },
+  url,
+} = Astro.props;
+const dePrefix = "/de";
+const isLangDe = url.startsWith(`${dePrefix}/`);
+const lang = isLangDe ? "de" : "en";
 
-const alternateLangUrl = isLangDe ? url.slice(dePrefix.length) : `${dePrefix}${url}`
-
+const alternateLangUrl = isLangDe
+  ? url.slice(dePrefix.length)
+  : `${dePrefix}${url}`;
 ---
 
 <BaseLayout title={`${title} – Jan Gosmann`} lang={lang}>
-    <nav>
+  <nav>
     <ul>
-        <li><a href="/" lang="en"><i class="fa-solid fa-house"></i>&nbsp;Main page</a></li>
-        <li><a href={alternateLangUrl} lang={isLangDe ? 'en' : 'de'}>
-            {isLangDe ? (<><UsGbFlag />
-            English version</>) : (<><DeFlag /> Deutsche Version</>)
-        </a></li>
+      <li>
+        <a href="/" lang="en"
+          ><i class="fa-solid fa-house"></i>&nbsp;Main page</a
+        >
+      </li>
+      <li>
+        <a href={alternateLangUrl} lang={isLangDe ? "en" : "de"}>
+          {
+            isLangDe ? (
+              <>
+                <UsGbFlag />
+                English version
+              </>
+            ) : (
+              <>
+                <DeFlag /> Deutsche Version
+              </>
+            )
+          }</a
+        >
+      </li>
     </ul>
-    </nav>
     <main>
-        <slot />
+      <slot />
     </main>
-    <nav><a href="/" lang="en"><i class="fa-solid fa-house"></i>&nbsp;Main page</a></nav>
-</BaseLayout>
+    <nav>
+      <a href="/" lang="en"><i class="fa-solid fa-house"></i>&nbsp;Main page</a>
+    </nav>
+  </nav>
 
-<script>
-import "../scripts/crypted-email";
-import "../scripts/crypted-phone";
-</script>
+  <script>
+    import "../scripts/crypted-email";
+    import "../scripts/crypted-phone";
+  </script>
 
-<style lang="scss">
+  <style lang="scss">
     :global(body) {
-        margin: auto;
-        padding: 32px;
-        max-width: 600px;
+      margin: auto;
+      padding: 32px;
+      max-width: 600px;
     }
-    
-    nav>ul {
-        list-style-type: none;
-        display: flex;
-        gap: 32px;
-        padding: 0;
+
+    nav > ul {
+      list-style-type: none;
+      display: flex;
+      gap: 32px;
+      padding: 0;
     }
-</style>
+  </style>
+</BaseLayout>

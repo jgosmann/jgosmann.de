@@ -51,9 +51,11 @@ const renderedPublications = await Promise.all(
       <ul class="cards flyin">
         {
           renderedProjects.map(({ rendered: { Content }, data }) => (
-            <li><Project {...data}>
-              <Content />
-            </Project></li>
+            <li>
+              <Project {...data}>
+                <Content />
+              </Project>
+            </li>
           ))
         }
       </ul>
@@ -63,9 +65,15 @@ const renderedPublications = await Promise.all(
       <h2>Publications</h2>
       <ul class="cards wide flyin">
         {
-          renderedPublications.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).map(({ rendered: { Content }, data }) => (
-          <li><Publication {...data}><Content /></Publication></li>
-          ))
+          renderedPublications
+            .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+            .map(({ rendered: { Content }, data }) => (
+              <li>
+                <Publication {...data}>
+                  <Content />
+                </Publication>
+              </li>
+            ))
         }
       </ul>
     </Section>
@@ -73,13 +81,62 @@ const renderedPublications = await Promise.all(
       <a id="contact"></a>
       <h2>Social Media</h2>
       <ul class="cards icon">
-        <li><SocialMediaAccount title="LinkedIn" handle="@jgosmann" icon="fa-brands fa-linkedin" exturl="https://www.linkedin.com/in/jgosmann/"/></li>
-        <li><SocialMediaAccount title="GitHub" handle="@jgosmann" icon="fa-brands fa-github" exturl="https://github.com/jgosmann"/></li>
-        <li><SocialMediaAccount title="Blog" handle="blog.jgosmann.de" icon="fa-solid fa-rss" exturl="https://blog.jgosmann.de"/></li>
-        <li><SocialMediaAccount title="Stack Overflow" handle="@jgosmann" icon="fa-brands fa-stack-overflow" exturl="https://stackoverflow.com/users/452160/jgosmann"/></li>
-        <li><SocialMediaAccount title="Flickr" handle="@jgosmann" icon="fa-brands fa-flickr" exturl="https://www.flickr.com/photos/hyper-world"/></li>
-        <li><SocialMediaAccount title="Twitter" handle="@jgosmann" icon="fa-brands fa-twitter" exturl="https://twitter.com/jgosmann"/></li>
-        <li><SocialMediaAccount title="Keybase" handle="@jgosmann" icon="fa-brands fa-keybase" exturl="https://keybase.io/jgosmann"/></li>
+        <li>
+          <SocialMediaAccount
+            title="LinkedIn"
+            handle="@jgosmann"
+            icon="fa-brands fa-linkedin"
+            exturl="https://www.linkedin.com/in/jgosmann/"
+          />
+        </li>
+        <li>
+          <SocialMediaAccount
+            title="GitHub"
+            handle="@jgosmann"
+            icon="fa-brands fa-github"
+            exturl="https://github.com/jgosmann"
+          />
+        </li>
+        <li>
+          <SocialMediaAccount
+            title="Blog"
+            handle="blog.jgosmann.de"
+            icon="fa-solid fa-rss"
+            exturl="https://blog.jgosmann.de"
+          />
+        </li>
+        <li>
+          <SocialMediaAccount
+            title="Stack Overflow"
+            handle="@jgosmann"
+            icon="fa-brands fa-stack-overflow"
+            exturl="https://stackoverflow.com/users/452160/jgosmann"
+          />
+        </li>
+        <li>
+          <SocialMediaAccount
+            title="Flickr"
+            handle="@jgosmann"
+            icon="fa-brands fa-flickr"
+            exturl="https://www.flickr.com/photos/hyper-world"
+          />
+        </li>
+        <li>
+          <SocialMediaAccount
+            title="Twitter"
+            handle="@jgosmann"
+            icon="fa-brands fa-twitter"
+            exturl="https://twitter.com/jgosmann"
+          />
+        </li>
+        <li>
+          <SocialMediaAccount
+            title="Keybase"
+            handle="@jgosmann"
+            icon="fa-brands fa-keybase"
+            exturl="https://keybase.io/jgosmann"
+          />
+        </li>
       </ul>
     </Section>
   </main>
@@ -95,16 +152,16 @@ const renderedPublications = await Promise.all(
     gap: 64px;
     justify-content: center;
   }
-  
-  ul.cards>li {
+
+  ul.cards > li {
     width: 400px;
   }
-  
-  ul.cards.wide>li {
+
+  ul.cards.wide > li {
     width: 600px;
   }
-  
-  ul.cards.icon>li {
+
+  ul.cards.icon > li {
     width: 120px;
   }
 
@@ -112,7 +169,7 @@ const renderedPublications = await Promise.all(
     main {
       padding-top: var(--header-large-height);
     }
-    
+
     ul.cards {
       justify-content: left;
     }

@@ -1,21 +1,20 @@
 ---
-
 ---
 
 <div class="collapsible">
-    <slot />
+  <slot />
 </div>
 <button title="Expand" class="expand">
-    <i class="fa-solid fa-chevron-down"></i>
+  <i class="fa-solid fa-chevron-down"></i>
 </button>
 
 <style>
-.collapsible {
+  .collapsible {
     transition: 0.2s ease-out;
     overflow: hidden;
-}
+  }
 
-button.expand {
+  button.expand {
     margin-top: 8px;
     width: 100%;
     border: none;
@@ -23,43 +22,43 @@ button.expand {
     height: 24px;
     font-size: 1.25em;
     transition: 0.2s;
-}
+  }
 
-button.expand:hover {
+  button.expand:hover {
     background-color: var(--col-light-blue);
     color: #fff;
     cursor: pointer;
-}
+  }
 </style>
 
 <script>
-import onLoad from "../scripts/onLoad";
+  import onLoad from "../scripts/onLoad";
 
-const enableCollapsibles = () => {
-  const collapsibles = document.getElementsByClassName("collapsible");
-  for (const elem of collapsibles) {
-    if (elem instanceof HTMLElement) {
-      const btn = elem.nextElementSibling;
-      elem.classList.add("collapsed");
-      btn?.classList.add("collapsed");
-      elem.style.maxHeight = "0px";
-      btn?.addEventListener("click", () => {
-        if (elem.classList.contains("collapsed")) {
-          elem.style.maxHeight = `${elem.scrollHeight}px`;
-          btn.innerHTML = '<i class="fas fa-chevron-up"></i>';
-          btn.setAttribute("title", "Collapse");
-        } else {
-          elem.style.maxHeight = "0px";
-          btn.innerHTML = '<i class="fas fa-chevron-down"></i>';
-          btn.setAttribute("title", "Expand");
-        }
+  const enableCollapsibles = () => {
+    const collapsibles = document.getElementsByClassName("collapsible");
+    for (const elem of collapsibles) {
+      if (elem instanceof HTMLElement) {
+        const btn = elem.nextElementSibling;
+        elem.classList.add("collapsed");
+        btn?.classList.add("collapsed");
+        elem.style.maxHeight = "0px";
+        btn?.addEventListener("click", () => {
+          if (elem.classList.contains("collapsed")) {
+            elem.style.maxHeight = `${elem.scrollHeight}px`;
+            btn.innerHTML = '<i class="fas fa-chevron-up"></i>';
+            btn.setAttribute("title", "Collapse");
+          } else {
+            elem.style.maxHeight = "0px";
+            btn.innerHTML = '<i class="fas fa-chevron-down"></i>';
+            btn.setAttribute("title", "Expand");
+          }
 
-        btn.classList.toggle("collapsed");
-        elem.classList.toggle("collapsed");
-      });
+          btn.classList.toggle("collapsed");
+          elem.classList.toggle("collapsed");
+        });
+      }
     }
-  }
-}
+  };
 
-onLoad(enableCollapsibles)
+  onLoad(enableCollapsibles);
 </script>

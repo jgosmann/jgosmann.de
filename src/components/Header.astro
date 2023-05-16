@@ -31,8 +31,8 @@ import { headerCssVars } from "./header";
 </header>
 
 <script>
-import onLoad from "../scripts/onLoad";
-import { headerLargeHeight } from "./header";
+  import onLoad from "../scripts/onLoad";
+  import { headerLargeHeight } from "./header";
 
   const controlHeaderSize = () => {
     const header = document.querySelector("header");
@@ -51,46 +51,46 @@ import { headerLargeHeight } from "./header";
     setHeaderSize();
   };
 
-const enableMinmenu = () => {
-  const nav = document.getElementsByTagName("nav")[0];
-  if (!nav) return;
+  const enableMinmenu = () => {
+    const nav = document.getElementsByTagName("nav")[0];
+    if (!nav) return;
 
-let minmenu_active = false;
+    let minmenu_active = false;
 
-const showMinmenu = () => {
-  nav.style.top = "0";
-  minmenu_active = true;
-}
+    const showMinmenu = () => {
+      nav.style.top = "0";
+      minmenu_active = true;
+    };
 
-const hideMinmenu = () => {
-  nav.style.top = "-100%";
-  minmenu_active = false;
-}
+    const hideMinmenu = () => {
+      nav.style.top = "-100%";
+      minmenu_active = false;
+    };
 
-const toggleMinmenu = () => {
-  if (minmenu_active) {
-    hideMinmenu();
-  } else {
-    showMinmenu();
-  }
-}
+    const toggleMinmenu = () => {
+      if (minmenu_active) {
+        hideMinmenu();
+      } else {
+        showMinmenu();
+      }
+    };
 
-  const minmenu = document.getElementById("minmenu");
+    const minmenu = document.getElementById("minmenu");
 
-  minmenu?.addEventListener("click", event => {
-    toggleMinmenu();
-    event.stopPropagation();
-  });
+    minmenu?.addEventListener("click", (event) => {
+      toggleMinmenu();
+      event.stopPropagation();
+    });
 
-  document.addEventListener("click", () => {
-    if (minmenu_active) {
-      hideMinmenu();
-    }
-  });
-}
+    document.addEventListener("click", () => {
+      if (minmenu_active) {
+        hideMinmenu();
+      }
+    });
+  };
 
-onLoad(controlHeaderSize)
-onLoad(enableMinmenu)
+  onLoad(controlHeaderSize);
+  onLoad(enableMinmenu);
 </script>
 
 <style lang="scss" define:vars={headerCssVars}>
@@ -236,7 +236,8 @@ onLoad(enableMinmenu)
     }
 
     @media not (prefers-reduced-motion) {
-      header, header > * {
+      header,
+      header > * {
         transition: 1s;
       }
     }
