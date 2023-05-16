@@ -56,6 +56,12 @@ const { title, lang } = Astro.props;
       url("/fonts/LatoLatin-Regular.woff") format("woff");
     font-weight: bold;
   }
+  
+  @media not (prefers-reduced-motion) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
 
   body {
     font-family: "Lato-Light", Helvetica, sans-serif;

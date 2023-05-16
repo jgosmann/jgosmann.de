@@ -49,32 +49,6 @@ import { headerCssVars } from "./header";
     window.addEventListener("scroll", setHeaderSize);
     setHeaderSize();
   };
-  
-  const activateSmoothScroll = () => {
-    const nav = document.getElementsByTagName("nav")[0];
-    if (!nav) return;
-    const navlinks = nav.getElementsByTagName("a");
-    for (const link of navlinks) {
-      const target = document.getElementById(
-        (link.getAttribute("href")??'').substring(1)
-      );
-      if (target) {
-        link.addEventListener("click", e => {
-          if (window.matchMedia('(prefers-reduced-motion)').matches) {
-            return
-          }
-            e.preventDefault();
-            target.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-              inline: "nearest"
-            });
-          }
-        );
-      }
-    }
-  };
-  
 
 const enableMinmenu = () => {
   const nav = document.getElementsByTagName("nav")[0];
@@ -116,11 +90,9 @@ const toggleMinmenu = () => {
 
   if (document.readyState === "loading") {
     window.addEventListener("load", controlHeaderSize);
-    window.addEventListener("load", activateSmoothScroll);
     window.addEventListener("load", enableMinmenu);
   } else {
     controlHeaderSize();
-    activateSmoothScroll();
     enableMinmenu();
   }
 </script>
