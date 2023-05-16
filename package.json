@@ -7,6 +7,7 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "deploy": "rsync -avz --delete --checksum dist/ jgosmann.de:/var/www/jgosmann.de",
     "astro": "astro"
   },
   "dependencies": {
