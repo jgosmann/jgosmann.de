@@ -1,20 +1,7 @@
 ---
 title: "Impressum"
-type: "page"
-date: 2019-02-11T15:56:53+01:00
-publishdate: 2019-02-11T15:56:53+01:00
-draft: false
+layout: ../../../layouts/LegalLayout.astro
 ---
-
-<p>
-<a href="{{< relref path="/legal/disclosure" lang="en" >}}">
-    <span class="split-flag">
-        <span class="flag-icon flag-icon-us ul"></span>
-        <span class="flag-icon flag-icon-gb lr"></span>
-    </span>
-    English version
-</a>
-</p>
 
 # Impressum
 

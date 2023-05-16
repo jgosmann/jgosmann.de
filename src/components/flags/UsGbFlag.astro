@@ -1,0 +1,39 @@
+---
+---
+
+<span class="split-flag">
+    <span class="fi fi-us ul"></span>
+    <span class="fi fi-gb lr"></span>
+</span>
+
+<style lang="scss">
+$flag-icons-path: "/flags";
+$flag-icons-included-countries: "us" "gb";
+@import "flag-icons/sass/flag-icons";
+
+.split-flag {
+    position: relative;
+    &::before {
+        content: '\00a0';
+    }
+    line-height: 1em;
+    width: calc(4em / 3);
+    display: inline-block;
+
+    .ul, .lr {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        &::before {
+            content: '';
+        }
+    }
+
+    .lr {
+        clip-path: polygon(0% 100%, 100% 0%, 100% 100%);
+    }    
+}
+</style>
