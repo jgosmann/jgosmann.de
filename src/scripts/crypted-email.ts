@@ -1,15 +1,18 @@
-class CryptedEmail extends HTMLAnchorElement {
+class CryptedEmail extends HTMLElement {
   constructor() {
     super();
 
     const name = this.getAttribute("name");
     const domain = this.getAttribute("domain");
     const tld = this.getAttribute("tld");
-
     const email = `${name}@${domain}.${tld}`;
-    this.textContent = email;
-    this.setAttribute("href", `mailto:${email}`);
+
+    const link = document.createElement("a");
+    link.textContent = email;
+    link.setAttribute("href", `mailto:${email}`);
+
+    this.appendChild(link);
   }
 }
 
-customElements.define("crypted-email", CryptedEmail, { extends: "a" });
+customElements.define("crypted-email", CryptedEmail);

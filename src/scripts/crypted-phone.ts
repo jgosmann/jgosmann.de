@@ -1,6 +1,6 @@
 const narrowNbsp = "\u202F";
 
-class CryptedPhone extends HTMLAnchorElement {
+class CryptedPhone extends HTMLElement {
   constructor() {
     super();
 
@@ -9,9 +9,12 @@ class CryptedPhone extends HTMLAnchorElement {
     const block0 = this.getAttribute("block0");
     const block1 = this.getAttribute("block1");
 
-    this.href = `tel:${country}${area}${block0}${block1}`;
-    this.textContent = `${country}${narrowNbsp}${area}${narrowNbsp}${block0}${narrowNbsp}${block1}`;
+    const link = document.createElement("a");
+    link.href = `tel:${country}${area}${block0}${block1}`;
+    link.textContent = `${country}${narrowNbsp}${area}${narrowNbsp}${block0}${narrowNbsp}${block1}`;
+
+    this.appendChild(link);
   }
 }
 
-customElements.define("crypted-phone", CryptedPhone, { extends: "a" });
+customElements.define("crypted-phone", CryptedPhone);
