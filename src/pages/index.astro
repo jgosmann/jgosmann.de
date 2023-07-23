@@ -14,7 +14,7 @@ const renderedAboutSections = await Promise.all(
   aboutSections.map(async (section) => ({
     data: section.data,
     rendered: await section.render(),
-  }))
+  })),
 );
 
 const projects = await getCollection("projects");
@@ -22,7 +22,7 @@ const renderedProjects = await Promise.all(
   projects.map(async (project) => ({
     data: project.data,
     rendered: await project.render(),
-  }))
+  })),
 );
 
 const publications = await getCollection("publications");
@@ -30,7 +30,7 @@ const renderedPublications = await Promise.all(
   publications.map(async (publication) => ({
     data: publication.data,
     rendered: await publication.render(),
-  }))
+  })),
 );
 ---
 

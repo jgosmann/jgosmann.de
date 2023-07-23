@@ -28,12 +28,12 @@ const getBackgroundImages = async () => {
             fit: "inside",
           });
           return [`bg-${key}`, `url(${img.src})`];
-        })
-      )
+        }),
+      ),
     );
   } else {
     return Object.fromEntries(
-      Object.keys(breakpoints).map((key) => [`bg-${key}`, "none"])
+      Object.keys(breakpoints).map((key) => [`bg-${key}`, "none"]),
     );
   }
 };
