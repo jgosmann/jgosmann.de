@@ -19,77 +19,86 @@ const breakpoints = {
 
 const getBackgroundImages = async () => {
   if (background) {
-    return Object.fromEntries(
-      await Promise.all(
-        Object.entries(breakpoints).map(async ([key, breakpoint]) => {
-          const img = await getImage({
-            src: background,
-            width: breakpoint,
-            fit: "inside",
-          });
-          return [`bg-${key}`, `url(${img.src})`];
-        }),
-      ),
+    const images = await Promise.all(
+      Object.entries(breakpoints).map(async ([key, breakpoint]) => {
+        return await getImage({
+          src: background,
+          width: breakpoint,
+          fit: "inside",
+        });
+      }),
     );
-  } else {
-    return Object.fromEntries(
-      Object.keys(breakpoints).map((key) => [`bg-${key}`, "none"]),
-    );
+    return images
+      .flatMap((img) => {
+        if (typeof img.options.src === "object" && img.options.width) {
+          const scaledHeight =
+            (img.options.width / img.options.src.width) *
+            img.options.src.height;
+          if (scaledHeight > 2 * 550) {
+            return [
+              `${img.src} ${img.options.width}w`,
+              `${img.src} ${Math.round(img.options.width / 2)}w 2x`,
+            ];
+          }
+          if (scaledHeight > 550) {
+            return [`${img.src} ${img.options.width}w`];
+          }
+          return [];
+        }
+      })
+      .join(", ");
   }
 };
-const backgroundCssVars = await getBackgroundImages();
+const scaledBackgrounds = await getBackgroundImages();
 ---
 
 <section>
-  <div class="flyin">
+  {
+    background && (
+      <div class="background">
+        <img alt="Background" src={background.src} srcset={scaledBackgrounds} />
+      </div>
+    )
+  }
+  <div class="flyin foreground">
     <h3><small>{leadTitle}</small><br />{title}</h3>
     <slot />
   </div>
 </section>
 
-<style define:vars={{ ...breakpoints, ...backgroundCssVars }} lang="scss">
+<style lang="scss">
   section {
+    position: relative;
     padding: 64px 32px;
 
     @media screen and (min-height: 600px) {
-      & > div {
+      & > div:not(.background) {
         min-height: 400px;
       }
     }
-
-    background-image: var(--bg-sm);
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
 
     &:nth-child(odd) {
       background-color: var(--col-pale-blue);
     }
 
-    @media screen and (min-width: 320px) {
-      background-image: var(--bg-md);
+    .foreground {
+      position: relative;
     }
 
-    @media screen and (min-width: 640px) {
-      background-image: var(--bg-lg);
-    }
+    .background {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      overflow: hidden;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
 
-    @media screen and (min-width: 1280px) {
-      background-image: var(--bg-xl);
-    }
-
-    @media screen and (-webkit-min-device-pixel-ratio: 2),
-      screen and (min-resolution: 192dpi),
-      screen and (min-resolution: 2dppx) {
-      background-image: var(--bg-md);
-
-      @media screen and (min-width: 640px) {
-        background-image: var(--bg-lg);
-      }
-
-      @media screen and (min-width: 1280px) {
-        background-image: var(--bg-xl);
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
     }
   }
