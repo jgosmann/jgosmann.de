@@ -15,6 +15,16 @@
     overflow: hidden;
   }
 
+  @media print {
+    .collapsible {
+      max-height: initial !important;
+    }
+
+    button.expand {
+      display: none;
+    }
+  }
+
   button.expand {
     margin-top: 8px;
     width: 100%;

@@ -59,7 +59,7 @@ const { title } = Astro.props;
     transition-timing-function: ease-out;
   }
 
-  @media not (prefers-reduced-motion) {
+  @media screen and not (prefers-reduced-motion) {
     .flyin {
       & > h3 {
         @include flyin-transition;

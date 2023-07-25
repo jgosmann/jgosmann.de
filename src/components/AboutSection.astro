@@ -77,8 +77,10 @@ const scaledBackgrounds = await getBackgroundImages();
       }
     }
 
-    &:nth-child(odd) {
-      background-color: var(--col-pale-blue);
+    @media screen {
+      &:nth-child(odd) {
+        background-color: var(--col-pale-blue);
+      }
     }
 
     .foreground {
@@ -99,6 +101,12 @@ const scaledBackgrounds = await getBackgroundImages();
         width: 100%;
         height: 100%;
         object-fit: cover;
+      }
+    }
+
+    @media print {
+      .background {
+        display: none;
       }
     }
   }
