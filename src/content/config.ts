@@ -5,6 +5,7 @@ export const collections = {
     schema: ({ image }) =>
       z.object({
         background: z.optional(image()),
+        backgroundClass: z.optional(z.string()),
         leadTitle: z.string(),
         title: z.string(),
       }),

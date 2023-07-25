@@ -1,5 +1,6 @@
 ---
 background: "../../assets/backgrounds/climb.jpg"
+backgroundClass: climb
 leadTitle: "I am a"
 title: "Rock Climber"
 ---

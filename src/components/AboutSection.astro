@@ -6,9 +6,10 @@ interface Props {
   leadTitle: string;
   title: string;
   background?: ImageMetadata;
+  backgroundClass?: string;
 }
 
-const { leadTitle, title, background } = Astro.props;
+const { leadTitle, title, background, backgroundClass } = Astro.props;
 
 const breakpoints = {
   sm: 320,
@@ -55,7 +56,7 @@ const scaledBackgrounds = await getBackgroundImages();
 <section>
   {
     background && (
-      <div class="background">
+      <div class:list={["background", backgroundClass]}>
         <img alt="Background" src={background.src} srcset={scaledBackgrounds} />
       </div>
     )
@@ -101,6 +102,21 @@ const scaledBackgrounds = await getBackgroundImages();
         width: 100%;
         height: 100%;
         object-fit: cover;
+      }
+    }
+
+    .background.climb {
+      img {
+        object-position: left 0% top 80%;
+        @media screen and (min-width: 770px) {
+          object-position: left 0% top 60%;
+        }
+        @media screen and (min-width: 1000px) {
+          object-position: left 0% top 50%;
+        }
+        @media screen and (min-width: 1230px) {
+          object-position: left 0% top 38%;
+        }
       }
     }
 
