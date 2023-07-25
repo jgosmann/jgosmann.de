@@ -15,7 +15,15 @@ export const collections = {
       z.object({
         background: z.optional(image()),
         title: z.string(),
-        exturl: z.optional(z.string()),
+        github: z.optional(z.string()),
+        extLinks: z.optional(
+          z.array(
+            z.object({
+              title: z.optional(z.string()),
+              url: z.string(),
+            }),
+          ),
+        ),
       }),
   }),
   publications: defineCollection({

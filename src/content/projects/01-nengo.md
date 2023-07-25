@@ -1,7 +1,9 @@
 ---
 background: "../../assets/projects/nengo3.png"
 title: "Nengo"
-exturl: "https://www.nengo.ai/"
+github: nengo/nengo
+extLinks:
+  - url: "https://www.nengo.ai/"
 ---
 
 I contributed to various parts of the Nengo neural network simulator, including

@@ -1,0 +1,31 @@
+---
+import ExtLink from "./ExtLink.astro";
+
+interface Props {
+  extLinks: Array<{
+    title?: string;
+    url: string;
+  }>;
+}
+
+const { extLinks } = Astro.props;
+---
+
+<ul class="ext-links">
+  {
+    extLinks.map((extLink) => (
+      <li>
+        <ExtLink href={extLink.url}>
+          {extLink.title ?? "More information"}
+        </ExtLink>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .ext-links {
+    list-style-type: none;
+    padding: 0;
+  }
+</style>

@@ -1,15 +1,19 @@
 ---
 import type { ImageMetadata } from "astro";
 import { getImage } from "astro:assets";
-import ExtLink from "./ExtLink.astro";
+import ProjectExtLinks from "./ProjectExtLinks.astro";
 
 interface Props {
   title: string;
-  exturl?: string;
+  extLinks?: Array<{
+    title?: string;
+    url: string;
+  }>;
   background?: ImageMetadata;
+  github?: string;
 }
 
-const { title, exturl, background } = Astro.props;
+const { title, background, github, extLinks } = Astro.props;
 
 const backgroundImage = background
   ? `url(${
@@ -23,17 +27,60 @@ const backgroundImage = background
   <div class="group">
     <slot />
     {
-      exturl && (
+      github && (
         <p>
-          <ExtLink href={exturl}>More information</ExtLink>
+          <ul class="badges">
+            <li>
+              <a
+                href={`https://github.com/${github}/stargazers`}
+                target="_blank"
+                rel="noopener"
+              >
+                <img
+                  alt="GitHub Repo stars"
+                  src={`https://img.shields.io/github/stars/${github}?style=social`}
+                />
+              </a>
+            </li>
+            <li>
+              <a
+                href={`https://github.com/${github}/graphs/contributors`}
+                target="_blank"
+                rel="noopener"
+              >
+                <img
+                  alt="GitHub contributors"
+                  src={`https://img.shields.io/github/contributors/${github}?style=social`}
+                />
+              </a>
+            </li>
+          </ul>
+        </p>
+      )
+    }
+    {
+      extLinks && (
+        <p>
+          <ProjectExtLinks extLinks={extLinks} />
         </p>
       )
     }
   </div>
 </div>
 
-<style>
+<style lang="scss">
   .container {
     background-repeat: no-repeat;
+  }
+
+  .badges,
+  .ext-links {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .badges {
+    display: flex;
+    gap: 16px;
   }
 </style>

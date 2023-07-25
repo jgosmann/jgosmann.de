@@ -1,6 +1,8 @@
 ---
 title: "Doveseed"
-exturl: "https://github.com/jgosmann/doveseed/"
+github: jgosmann/doveseed
+extLinks:
+  - url: "https://github.com/jgosmann/doveseed/"
 ---
 
 Doveseed is a minimalistic backend service for email subscriptions to RSS feeds
