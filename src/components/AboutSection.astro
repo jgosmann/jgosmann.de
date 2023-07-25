@@ -74,7 +74,7 @@ const scaledBackgrounds = await getBackgroundImages();
 
     @media screen and (min-height: 600px) {
       & > div:not(.background) {
-        min-height: 400px;
+        min-height: 350px;
       }
     }
 
@@ -107,7 +107,13 @@ const scaledBackgrounds = await getBackgroundImages();
 
     .background.climb {
       img {
-        object-position: left 0% top 80%;
+        object-position: left 0% top 100%;
+        @media screen and (min-width: 540px) {
+          object-position: left 0% top 80%;
+        }
+        @media screen and (min-width: 620px) {
+          object-position: left 0% top 70%;
+        }
         @media screen and (min-width: 770px) {
           object-position: left 0% top 60%;
         }
