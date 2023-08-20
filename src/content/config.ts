@@ -14,6 +14,7 @@ export const collections = {
     schema: ({ image }) =>
       z.object({
         background: z.optional(image()),
+        backgroundWidth: z.optional(z.number()),
         title: z.string(),
         github: z.optional(z.string()),
         extLinks: z.optional(

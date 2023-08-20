@@ -10,19 +10,29 @@ interface Props {
     url: string;
   }>;
   background?: ImageMetadata;
+  backgroundWidth?: number;
   github?: string;
 }
 
-const { title, background, github, extLinks } = Astro.props;
+const { title, background, backgroundWidth, github, extLinks } = Astro.props;
 
 const backgroundImage = background
   ? `url(${
-      (await getImage({ src: background, width: 400, fit: "inside" })).src
+      (
+        await getImage({
+          src: background,
+          width: backgroundWidth ?? 400,
+          fit: "inside",
+        })
+      ).src
     })`
   : "none";
 ---
 
-<div class="container" style={{ backgroundImage }}>
+<div
+  class="container"
+  style={{ backgroundImage, paddingTop: background ? "64px" : "0" }}
+>
   <h3>{title}</h3>
   <div class="group">
     <slot />
@@ -71,6 +81,7 @@ const backgroundImage = background
 <style lang="scss">
   .container {
     background-repeat: no-repeat;
+    background-position: top right;
   }
 
   .badges,

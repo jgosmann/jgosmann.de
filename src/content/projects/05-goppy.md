@@ -1,5 +1,5 @@
 ---
-background: "../../assets/projects/goppy.png"
+background: "../../assets/projects/goppy-sm.png"
 title: "GopPy"
 github: jgosmann/goppy
 extLinks:
