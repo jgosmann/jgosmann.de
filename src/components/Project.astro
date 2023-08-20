@@ -21,7 +21,7 @@ const backgroundImage = background
       (
         await getImage({
           src: background,
-          width: backgroundWidth ?? 400,
+          width: 2 * (backgroundWidth ?? 400),
           fit: "inside",
         })
       ).src
@@ -31,7 +31,11 @@ const backgroundImage = background
 
 <div
   class="container"
-  style={{ backgroundImage, paddingTop: background ? "64px" : "0" }}
+  style={{
+    backgroundImage,
+    backgroundSize: `${backgroundWidth ?? 400}px auto`,
+    paddingTop: background ? "64px" : "0",
+  }}
 >
   <h3>{title}</h3>
   <div class="group">
