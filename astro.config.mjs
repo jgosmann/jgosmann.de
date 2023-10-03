@@ -1,14 +1,4 @@
-import { defineConfig } from 'astro/config';
-import image from '@astrojs/image';
+import { defineConfig } from "astro/config";
 
 // https://astro.build/config
-export default defineConfig({
-  experimental: {
-    assets: true,
-  },
-  integartions: [
-    image({
-      serviceEntryPoint: "@astrojs/image/sharp",
-    })
-  ]  
-});
+export default defineConfig({});
