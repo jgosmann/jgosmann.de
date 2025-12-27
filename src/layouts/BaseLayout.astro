@@ -7,7 +7,7 @@ export interface Props {
 const { title, lang } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang={lang || "en"}>
   <head>
     <meta charset="UTF-8" />
@@ -22,12 +22,14 @@ const { title, lang } = Astro.props;
 </html>
 
 <style lang="scss" is:global>
-  @import "normalize.css/normalize.css";
+  @use "@fortawesome/fontawesome-free/scss/variables" with (
+    $font-path: "/fontawesome"
+  );
+  @use "@fortawesome/fontawesome-free/scss/fontawesome.scss";
+  @use "@fortawesome/fontawesome-free/scss/brands.scss";
+  @use "@fortawesome/fontawesome-free/scss/solid.scss";
 
-  $fa-font-path: "/fontawesome";
-  @import "@fortawesome/fontawesome-free/scss/fontawesome.scss";
-  @import "@fortawesome/fontawesome-free/scss/brands.scss";
-  @import "@fortawesome/fontawesome-free/scss/solid.scss";
+  @import "normalize.css/normalize.css";
 
   :root {
     --col-dark-blue: #3d5782;
